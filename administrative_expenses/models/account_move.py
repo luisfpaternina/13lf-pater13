@@ -67,4 +67,3 @@ class AccountMove(models.Model):
                         record.is_validate = False
             else:
                 record.is_validate = False
-
