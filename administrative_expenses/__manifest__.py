@@ -1,6 +1,14 @@
 {
     'name': 'Administrative expenses',
 
+    'summary': """
+        This module add one line in subscription lines when payment is letter than
+        due date""",
+
+    'description': """
+        Add new line in subscription line ids
+    """,
+
     'version': '13.0.1.0',
 
     'author': "Nybble group",
