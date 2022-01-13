@@ -7,10 +7,10 @@
         <field name="arch" type="xml">
 
             <xpath expr="//field[(@name='partner_id')]" position="after">
-                <field name="is_validate"/>
-                <field name="is_validate_date"/>
-                <field name="aditional_value"/>
-                <field name="aditional_payment_date"/>
+                <field name="is_validate" invisible="1"/>
+                <field name="is_validate_date" invisible="1"/>
+                <field name="aditional_value" invisible="1"/>
+                <field name="aditional_payment_date" invisible="1"/>
                 <button string="Validate" name="_validate_subscription" type="object" invisible="1"/>
             </xpath>
             
