@@ -15,8 +15,7 @@ class AccountMove(models.Model):
         string="Aditional value",
         compute="_calculate_aditional_value")
     aditional_payment_date = fields.Datetime(
-        string="Payment date",
-        compute="_calculate_aditional_payment_date")
+        string="Payment date")
 
 
     @api.depends('invoice_payments_widget')
