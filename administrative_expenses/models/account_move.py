@@ -18,6 +18,14 @@ class AccountMove(models.Model):
         string="Payment date")
 
 
+    @api.depends('invoice_payments_widget')
+    def _calculate_aditional_payment_date(self):
+        if self.invoice_payments_widget:
+            self.aditional_payment_date = datetime.strptime(invoice_payments_widget, '%d/%m/%Y')
+        else:
+            self.aditional_payment_date = False
+
+
     @api.depends('invoice_date','invoice_date_due')
     def _calculate_aditional_value(self):
         if self.invoice_date and self.invoice_date_due:
