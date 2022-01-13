@@ -37,7 +37,7 @@ class AccountMove(models.Model):
 
     def _validate_subscription(self):
         for record in self:
-            if record.state == 'posted':
+            if record.invoice_payment_state == 'paid':
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
                 logging.info("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
