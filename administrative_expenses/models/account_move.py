@@ -22,7 +22,7 @@ class AccountMove(models.Model):
     @api.depends('invoice_payments_widget')
     def _calculate_aditional_payment_date(self):
         if self.invoice_payments_widget:
-            self.aditional_payment_date = datetime.strptime(invoice_payments_widget, '%d/%m/%Y')
+            self.aditional_payment_date = datetime.strptime(self.invoice_payments_widget, '%d/%m/%Y')
         else:
             self.aditional_payment_date = False
 
