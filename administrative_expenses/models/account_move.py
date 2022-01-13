@@ -21,6 +21,7 @@ class AccountMove(models.Model):
             logging.info("DATESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
             if self.invoice_date < self.invoice_date_due:
                 self.aditional_value = self.amount_total * 0.10
+                logging.info("ADITIONAL-VALUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
             else:
                 self.aditional_value = 0.0
         else:
