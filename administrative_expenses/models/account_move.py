@@ -81,7 +81,7 @@ class AccountMove(models.Model):
                             vals = {
                             'partner_id': s.partner_id.id,
                             'recurring_invoice_line_ids': [(0, 0, {
-                                'product_id': s.recurring_invoice_line_ids.product_id.id,
+                                'product_id': record.expense_product.id,
                                 'name': 'Cargo por pago fuera de término',
                                 'price_unit': record.aditional_value,
                                 'quantity': 1,
