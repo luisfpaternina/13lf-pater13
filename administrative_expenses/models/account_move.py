@@ -45,7 +45,7 @@ class AccountMove(models.Model):
         if self.aditional_payment_date and self.invoice_date_due:
             logging.info("DATESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
             if self.aditional_payment_date > self.invoice_date_due:
-                self.aditional_value = self.amount_total * 0.10
+                self.aditional_value = self.amount_untaxed * 0.10
                 logging.info("ADITIONAL-VALUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
             else:
                 self.aditional_value = 0.0
