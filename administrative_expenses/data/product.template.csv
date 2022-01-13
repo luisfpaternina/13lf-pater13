@@ -1,2 +1,2 @@
-id,name,taxes_ids:id
+id,name,taxes_id:id
 id_administrative_expense,"Gasto administrativo",id_expenses_tax
