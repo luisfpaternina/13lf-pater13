@@ -19,7 +19,8 @@ class AccountMove(models.Model):
         compute="_calculate_payment_date")
     expense_product = fields.Many2one(
         'product.template',
-        string="Product")
+        string="Product",
+        compute="add_administrative_expense_product")
 
 
     @api.depends('name')
