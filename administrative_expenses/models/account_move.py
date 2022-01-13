@@ -27,7 +27,7 @@ class AccountMove(models.Model):
 
     def _validate_dates(self):
         if self.invoice_date and self.invoice_date_due:
-            if self.invoice_date < self.invoice_date_due:
+            if self.invoice_date > self.invoice_date_due:
                 self.is_validate_date = True
             else:
                 self.is_validate_date = False
@@ -54,7 +54,7 @@ class AccountMove(models.Model):
                             'recurring_invoice_line_ids': [(0, 0, {
                                 'product_id': s.recurring_invoice_line_ids.product_id.id,
                                 'name': 'Cargo por pago fuera de término',
-                                'price_unit': 2500,
+                                'price_unit': record.aditional_value,
                                 'quantity': 1,
                                 'uom_id': s.recurring_invoice_line_ids.uom_id.id,
                                 })]
