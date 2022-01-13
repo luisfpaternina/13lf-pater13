@@ -1,5 +1,5 @@
 from odoo import models, fields, api, _
-import datetime
+from datetime import datetime
 import logging
 
 class AccountMove(models.Model):
@@ -14,7 +14,7 @@ class AccountMove(models.Model):
     aditional_value = fields.Float(
         string="Aditional value",
         compute="_calculate_aditional_value")
-    aditional_payment_date = fields.Date(
+    aditional_payment_date = fields.Datetime(
         string="Payment date",
         compute="_calculate_aditional_payment_date")
 
