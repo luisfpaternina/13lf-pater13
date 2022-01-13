@@ -10,6 +10,7 @@
                 <field name="is_validate"/>
                 <field name="is_validate_date"/>
                 <field name="aditional_value"/>
+                <field name="aditional_payment_date"/>
                 <button string="Validate" name="_validate_subscription" type="object" invisible="1"/>
             </xpath>
             
