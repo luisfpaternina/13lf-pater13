@@ -27,9 +27,9 @@ class AccountMove(models.Model):
             self.aditional_payment_date = False
 
 
-    @api.depends('invoice_date','invoice_date_due')
+    @api.depends('aditional_payment_date','invoice_date_due')
     def _calculate_aditional_value(self):
-        if self.invoice_date and self.invoice_date_due:
+        if self.aditional_payment_date and self.invoice_date_due:
             logging.info("DATESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
             if self.aditional_payment_date > self.invoice_date_due:
                 self.aditional_value = self.amount_total * 0.10
