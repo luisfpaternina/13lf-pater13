@@ -17,6 +17,18 @@ class AccountMove(models.Model):
     aditional_payment_date = fields.Date(
         string="Payment date",
         compute="_calculate_payment_date")
+    expense_product = fields.Many2one(
+        'product.template',
+        string="Product")
+
+
+    @api.depends('name')
+    def add_administrative_expense_product(self):
+        product_obj = self.env['product.template'].search([('name', '=', 'Gasto administrativo')])
+        if product_obj:
+            self.expense_product = product_obj.id
+        else:
+            self.expense_product = False
 
 
     def _calculate_payment_date(self):
