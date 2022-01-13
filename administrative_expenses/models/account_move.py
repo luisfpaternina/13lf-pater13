@@ -22,7 +22,7 @@ class AccountMove(models.Model):
     def _calculate_payment_date(self):
         payment_obj = self.env['account.payment'].search([('communication', '=', self.name)])
         if payment_obj:
-            self.aditional_payment_date = self.payment_date
+            self.aditional_payment_date = payment_obj.payment_date
         else:
             self.aditional_payment_date = False
 
