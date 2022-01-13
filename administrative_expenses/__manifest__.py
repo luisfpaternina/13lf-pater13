@@ -21,6 +21,7 @@
 
     'data': [
        
+        'data/account.tax.csv',
         'data/product.template.csv',
         'views/account_move.xml',
                    
