@@ -18,6 +18,7 @@ class AccountMove(models.Model):
     @api.depends('invoice_date','invoice_date_due')
     def _calculate_aditional_value(self):
         if self.invoice_date and self.invoice_date_due:
+            logging.info("DATESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
             if self.invoice_date < self.invoice_date_due:
                 self.aditional_value = self.amount_total * 0.10
             else:
@@ -26,6 +27,7 @@ class AccountMove(models.Model):
             self.aditional_value = 0.0
 
 
+    @api.depends('invoice_date','invoice_date_due')
     def _validate_dates(self):
         if self.invoice_date and self.invoice_date_due:
             if self.invoice_date < self.invoice_date_due:
