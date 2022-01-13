@@ -14,14 +14,14 @@ class AccountMove(models.Model):
     aditional_value = fields.Float(
         string="Aditional value",
         compute="_calculate_aditional_value")
-    aditional_payment_date = fields.Datetime(
+    aditional_payment_date = fields.Date(
         string="Payment date")
 
 
-    @api.depends('invoice_payments_widget')
-    def _calculate_aditional_payment_date(self):
-        if self.invoice_payments_widget:
-            self.aditional_payment_date = datetime.strptime(self.invoice_payments_widget, '%d/%m/%y %H:%M:%S')
+    def _calculate_payment_date(self):
+        payment_obj = self.env['account.payment'].search([('communication', '=', self.name)])
+        if payment_obj:
+            self.aditional_payment_date = self.payment_date
         else:
             self.aditional_payment_date = False
 
