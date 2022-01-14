@@ -25,6 +25,8 @@ class AccountMove(models.Model):
     days_difference = fields.Integer(
         string='Days',
         compute="_compute_difference")
+    expense_name = fields.Char(
+        string="Expense name")
 
 
     @api.depends('aditional_payment_date','invoice_date_due')
