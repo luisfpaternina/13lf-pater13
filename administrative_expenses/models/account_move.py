@@ -27,6 +27,15 @@ class AccountMove(models.Model):
         store=True)
 
 
+    @api.model
+    def _compute_difference(self):
+        for rec in self:
+            if rec.aditional_payment_date and rec.invoice_date_due:
+                rec.days_difference = (rec.invoice_date_due - rec.aditional_payment_date).days
+            else:
+                rec.days_difference = 0
+
+
     @api.depends('name')
     def add_administrative_expense_product(self):
         product_obj = self.env['product.template'].search([('name', '=', 'Gasto administrativo')])
