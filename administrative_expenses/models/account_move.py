@@ -32,7 +32,7 @@ class AccountMove(models.Model):
     def _compute_difference(self):
         for rec in self:
             if rec.aditional_payment_date and rec.invoice_date_due:
-                rec.days_difference = (rec.invoice_date_due - rec.aditional_payment_date).days
+                rec.days_difference = (rec.aditional_payment_date - rec.invoice_date_due).days
             else:
                 rec.days_difference = 0
 
