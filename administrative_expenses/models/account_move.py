@@ -28,7 +28,7 @@ class AccountMove(models.Model):
         compute="_compute_difference")
 
 
-    @api.model
+    @api.depends('aditional_payment_date','invoice_date_due')
     def _compute_difference(self):
         for rec in self:
             if rec.aditional_payment_date and rec.invoice_date_due:
