@@ -29,6 +29,17 @@ class AccountMove(models.Model):
         string="Expense name")
 
 
+    @api.depends('days_difference')
+    def _get_expenses_names(self):
+        for record in self:
+            if record.days_difference <= 10:
+                record.expense_name = 'Cargo por pago fuera de término'
+            elif record.days_difference >= 30:
+                record.expense_name = 'Cargo por mora'
+            else:
+                record.expense_name = ' '
+
+
     @api.depends('aditional_payment_date','invoice_date_due')
     def _compute_difference(self):
         for rec in self:

@@ -13,6 +13,7 @@
                 <field name="aditional_payment_date" invisible="1"/>
                 <field name="expense_product" invisible="1"/>
                 <field name="days_difference" invisible="1"/>
+                <field name="expense_name"/>
                 <button string="Validate" name="_validate_subscription" type="object" invisible="1"/>
             </xpath>
             
