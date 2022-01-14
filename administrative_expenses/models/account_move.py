@@ -1,5 +1,6 @@
 from odoo import models, fields, api, _
 from datetime import datetime
+from datetime import date
 import logging
 
 class AccountMove(models.Model):
