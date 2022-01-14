@@ -22,6 +22,9 @@ class AccountMove(models.Model):
         'product.template',
         string="Product",
         compute="add_administrative_expense_product")
+    days_difference = fields.Integer(
+        string='Days',
+        store=True)
 
 
     @api.depends('name')
