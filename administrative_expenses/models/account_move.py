@@ -26,7 +26,8 @@ class AccountMove(models.Model):
         string='Days',
         compute="_compute_difference")
     expense_name = fields.Char(
-        string="Expense name")
+        string="Expense name",
+        compute="_get_expenses_names")
 
 
     @api.depends('days_difference')
