@@ -60,7 +60,7 @@ class AccountMove(models.Model):
             if self.aditional_payment_date > self.invoice_date_due and self.days_difference < 10:
                 self.aditional_value = self.amount_untaxed * 0.10
                 logging.info("VALUE-UNOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
-            elif self.aditional_payment_date > self.invoice_date_due and self.days_difference <= 30:
+            elif self.aditional_payment_date > self.invoice_date_due and self.days_difference >= 30:
                 self.aditional_value = self.amount_untaxed * 0.15
                 logging.info("VALUE-DOSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
             else:
