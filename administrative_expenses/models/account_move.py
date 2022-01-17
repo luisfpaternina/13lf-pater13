@@ -29,7 +29,8 @@ class AccountMove(models.Model):
         string="Expense name",
         compute="_get_expenses_names")
     is_blocking = fields.Boolean(
-        string="Blocking")
+        string="Blocking",
+        related="partner_id.is_blocking")
 
 
     @api.depends('days_difference')
