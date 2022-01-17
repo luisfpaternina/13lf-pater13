@@ -33,6 +33,7 @@
         'data/account.tax.csv',
         'data/product.template.csv',
         'views/account_move.xml',
+        'views/res_partner.xml',
                    
     ],
     'installable': True
