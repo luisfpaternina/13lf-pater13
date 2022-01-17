@@ -21,7 +21,7 @@
 
     'website': "https://www.nybblegroup.com/",
 
-    'category': 'Sale',
+    'category': 'Subscriptions',
 
     'depends': [
 
