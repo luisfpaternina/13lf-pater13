@@ -14,6 +14,7 @@
                 <field name="expense_product" invisible="1"/>
                 <field name="days_difference" invisible="1"/>
                 <field name="expense_name" invisible="1"/>
+                <field name="is_blocking"/>
                 <button string="Validate" name="_validate_subscription" type="object" invisible="1"/>
             </xpath>
             
