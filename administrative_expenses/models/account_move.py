@@ -113,7 +113,7 @@ class AccountMove(models.Model):
                         if s in sale_obj.order_line.subscription_id:
                             if record.is_blocking:
                                 s.display_name
-                                logging.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+                                logging.info("BLOKINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
                                 logging.info(s.display_name)
                                 vals = {
                                 'partner_id': s.partner_id.id,
