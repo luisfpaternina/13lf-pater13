@@ -1,6 +1,9 @@
 {
     'name': 'Stock ext',
 
+    'summary': """
+        This module add fields in stock in the models product.product and product.template""",
+
     'version': '13.0.1.0',
 
     'author': "Nybble group",

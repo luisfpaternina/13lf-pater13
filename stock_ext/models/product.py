@@ -1,4 +1,14 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
-class ResCompany(models.Model):
-    _inherit = 'res.company'
+
+class ProductProduct(models.Model):
+    _inherit = 'product.product'
+
+
+
+
+
+class ProductTemplate(models.Model):
+    _inherit = 'product.template'
+
+    codigo_ncm = fields.Char(string="Codigo NCM")
