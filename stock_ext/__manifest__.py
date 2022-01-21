@@ -23,7 +23,7 @@
 
     'data': [
        
-        #'views/sale_subscription.xml',
+        'views/product.xml',
                    
     ],
     'installable': True

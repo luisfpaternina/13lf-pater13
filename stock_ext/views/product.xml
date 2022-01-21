@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="view_res_company_inherit_esvida" model="ir.ui.view">
-        <field name="name">res.company.form.inherit</field>
-        <field name="model">res.company</field>
-        <field name="inherit_id" ref="base.view_company_form"/>
+    <record id="inherit_view_stoct_product_template" model="ir.ui.view">
+        <field name="name">inherit.form.view.product.template</field>
+        <field name="model">codigo_ncm</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
         <field name="arch" type="xml"> 
-            <xpath expr="//field[(@name='website')]" position="after">
-                <field name="terms"/>
+            <xpath expr="//field[(@name='default_code')]" position="after">
+                <field name="codigo_ncm"/>
             </xpath>
         </field>
     </record>
-</odoo>     
+</odoo>
+ 
