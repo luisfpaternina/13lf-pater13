@@ -103,6 +103,9 @@ class AccountMove(models.Model):
     def _validate_subscription(self):
         for record in self:
             if record.invoice_payment_state == 'paid' and record.is_blocking:
+                logging.info("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
+                logging.info(record.is_blocking)
+                logging.info(record.is_validate_date)
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
                 logging.info("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
@@ -137,6 +140,9 @@ class AccountMove(models.Model):
                     else:
                         record.is_validate = False
             elif record.invoice_payment_state == 'paid' and record.is_validate_date:
+                logging.info("ttttttttttttttttttttttttttttttttttttttttttttttttt")
+                logging.info(record.is_blocking)
+                logging.info(record.is_validate_date)
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
                 logging.info("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
