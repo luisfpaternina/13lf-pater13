@@ -112,22 +112,25 @@ class AccountMove(models.Model):
                         record.is_validate = True
                         if s in sale_obj.order_line.subscription_id:
                             s.display_name
-                            logging.info("BLOKINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
-                            logging.info(s.display_name)
+                            c = 1
                             for line in s.recurring_invoice_line_ids:
-                                range_number = len(line)
-                                logging.info("aaaaaaaaaaaaaaaaaaaaaaaaaaaa",range_number)
+                                range_number = len(s.recurring_invoice_line_ids)
+                                if c < range_number:
+                                    quantity = 1
+                                    price_unit = 0
+                                else:
+                                    quantity = 1
+                                    price_unit = 300
+
                                 vals = {
-                                'partner_id': s.partner_id.id,
-                                'recurring_invoice_line_ids': [(0, 0, {
                                     'product_id': record.expense_product.id,
                                     'name': record.expense_name,
-                                    'price_unit': 300,
-                                    'quantity': 4,
+                                    'price_unit': price_unit,
+                                    'quantity': quantity,
                                     'uom_id': s.recurring_invoice_line_ids.uom_id.id,
-                                    })]
-                                }
-                            s.write(vals)
+                                    }
+                                line.write(vals)
+                                c = c + 1
                             break
                         else:
                             record.is_validate = False
