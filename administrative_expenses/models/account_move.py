@@ -116,14 +116,14 @@ class AccountMove(models.Model):
                             logging.info(s.display_name)
                             vals = {
                             'partner_id': s.partner_id.id,
-                            'recurring_total': 300,
                             'recurring_invoice_line_ids': [(0, 0, {
                                 'product_id': record.expense_product.id,
                                 'name': record.expense_name,
                                 'price_unit': 0.0,
                                 'quantity': 6,
                                 'uom_id': s.recurring_invoice_line_ids.uom_id.id,
-                                })]
+                                })],
+                            'recurring_total': 300,
                             }
                             logging.info("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
                             logging.info(vals)
