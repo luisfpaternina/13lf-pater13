@@ -161,7 +161,7 @@ class AccountMove(models.Model):
                                     'quantity': 1,
                                     'uom_id': s.recurring_invoice_line_ids.uom_id.id,
                                 }
-                                line.write(vals)
+                                s.write(vals)
                             break
                         else:
                             record.is_validate = False
