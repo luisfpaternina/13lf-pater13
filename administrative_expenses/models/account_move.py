@@ -123,7 +123,7 @@ class AccountMove(models.Model):
                                     'product_id': record.expense_product.id,
                                     'name': record.expense_name,
                                     'price_unit': 300,
-                                    'quantity': 1,
+                                    'quantity': 4,
                                     'uom_id': s.recurring_invoice_line_ids.uom_id.id,
                                     })]
                                 }
