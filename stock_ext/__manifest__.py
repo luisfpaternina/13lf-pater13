@@ -1,0 +1,27 @@
+{
+    'name': 'Stock ext',
+
+    'version': '13.0.1.0',
+
+    'author': "Nybble group",
+
+    'contributors': ['Luis Felipe Paternina'],
+
+    'website': "",
+
+    'category': 'Stock',
+
+    'depends': [
+
+        'sale_management',
+        'stock',
+
+    ],
+
+    'data': [
+       
+        #'views/sale_subscription.xml',
+                   
+    ],
+    'installable': True
+}
