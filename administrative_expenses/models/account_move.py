@@ -111,46 +111,30 @@ class AccountMove(models.Model):
                     if sale_obj:
                         record.is_validate = True
                         if s in sale_obj.order_line.subscription_id:
-                            if record.is_blocking:
-                                s.display_name
-                                logging.info("BLOKINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
-                                logging.info(s.display_name)
-                                vals = {
-                                'partner_id': s.partner_id.id,
-                                'recurring_total': 300,
-                                'recurring_invoice_line_ids': [(0, 0, {
-                                    'product_id': record.expense_product.id,
-                                    'name': record.expense_name,
-                                    'price_unit': 0.0,
-                                    'quantity': 1,
-                                    'uom_id': s.recurring_invoice_line_ids.uom_id.id,
-                                    })]
-                                }
-                                logging.info("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
-                                logging.info(vals)
-                                s.write(vals)
-                                break
-                            else:
-                                s.display_name
-                                logging.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-                                logging.info(s.display_name)
-                                vals = {
-                                'partner_id': s.partner_id.id,
-                                'recurring_invoice_line_ids': [(0, 0, {
-                                    'product_id': record.expense_product.id,
-                                    'name': record.expense_name,
-                                    'price_unit': record.aditional_value,
-                                    'quantity': 1,
-                                    'uom_id': s.recurring_invoice_line_ids.uom_id.id,
-                                    })]
-                                }
-                                logging.info("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
-                                logging.info(vals)
-                                s.write(vals)
-                                break
+                            s.display_name
+                            logging.info("BLOKINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
+                            logging.info(s.display_name)
+                            vals = {
+                            'partner_id': s.partner_id.id,
+                            'recurring_total': 300,
+                            'recurring_invoice_line_ids': [(0, 0, {
+                                'product_id': record.expense_product.id,
+                                'name': record.expense_name,
+                                'price_unit': 0.0,
+                                'quantity': 1,
+                                'uom_id': s.recurring_invoice_line_ids.uom_id.id,
+                                })]
+                            }
+                            logging.info("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
+                            logging.info(vals)
+                            s.write(vals)
+                            break
+                        else:
+                            logging.info("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
+                            logging.info(vals)
                     else:
                         record.is_validate = False
-            else:
+            elif record.invoice_payment_state == 'paid' and record.is_validate_date::
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
                 logging.info("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
@@ -159,42 +143,27 @@ class AccountMove(models.Model):
                     if sale_obj:
                         record.is_validate = True
                         if s in sale_obj.order_line.subscription_id:
-                            if record.is_blocking:
-                                s.display_name
-                                logging.info("BLOKINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
-                                logging.info(s.display_name)
-                                vals = {
-                                'partner_id': s.partner_id.id,
-                                'recurring_total': 300,
-                                'recurring_invoice_line_ids': [(0, 0, {
-                                    'product_id': record.expense_product.id,
-                                    'name': record.expense_name,
-                                    'price_unit': 0.0,
-                                    'quantity': 1,
-                                    'uom_id': s.recurring_invoice_line_ids.uom_id.id,
-                                    })]
-                                }
-                                logging.info("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
-                                logging.info(vals)
-                                s.write(vals)
-                                break
-                            else:
-                                s.display_name
-                                logging.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-                                logging.info(s.display_name)
-                                vals = {
-                                'partner_id': s.partner_id.id,
-                                'recurring_invoice_line_ids': [(0, 0, {
-                                    'product_id': record.expense_product.id,
-                                    'name': record.expense_name,
-                                    'price_unit': record.aditional_value,
-                                    'quantity': 1,
-                                    'uom_id': s.recurring_invoice_line_ids.uom_id.id,
-                                    })]
-                                }
-                                logging.info("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
-                                logging.info(vals)
-                                s.write(vals)
-                                break
+                            s.display_name
+                            logging.info("BLOKINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
+                            logging.info(s.display_name)
+                            vals = {
+                            'partner_id': s.partner_id.id,
+                            'recurring_invoice_line_ids': [(0, 0, {
+                                'product_id': record.expense_product.id,
+                                'name': record.expense_name,
+                                'price_unit': record.aditional_value,
+                                'quantity': 1,
+                                'uom_id': s.recurring_invoice_line_ids.uom_id.id,
+                                })]
+                            }
+                            logging.info("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
+                            logging.info(vals)
+                            s.write(vals)
+                            break
+                        else:
+                            logging.info("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
+                            logging.info(vals)
                     else:
                         record.is_validate = False
+            else:
+                print("NOTHING!!!")
