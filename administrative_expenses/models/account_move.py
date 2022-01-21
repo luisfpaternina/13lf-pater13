@@ -76,13 +76,10 @@ class AccountMove(models.Model):
     @api.depends('aditional_payment_date','invoice_date_due')
     def _calculate_aditional_value(self):
         if self.aditional_payment_date and self.invoice_date_due:
-            logging.info("DATESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
             if self.aditional_payment_date > self.invoice_date_due and self.days_difference < 10:
                 self.aditional_value = self.amount_untaxed * 0.10
-                logging.info("VALUE-UNOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
             elif self.aditional_payment_date > self.invoice_date_due and self.days_difference >= 30:
                 self.aditional_value = self.amount_untaxed * 0.15
-                logging.info("VALUE-DOSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
             else:
                 self.aditional_value = 0.0
         else:
@@ -157,6 +154,7 @@ class AccountMove(models.Model):
                                 })]
                             }
                             s.write(vals)
+                            logging.info()
                             break
                         else:
                             record.is_validate = False
