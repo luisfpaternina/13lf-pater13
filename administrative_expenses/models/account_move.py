@@ -132,6 +132,7 @@ class AccountMove(models.Model):
                         else:
                             logging.info("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
                             logging.info(vals)
+                            record.is_validate = False
                     else:
                         record.is_validate = False
             elif record.invoice_payment_state == 'paid' and record.is_validate_date:
@@ -163,7 +164,9 @@ class AccountMove(models.Model):
                         else:
                             logging.info("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
                             logging.info(vals)
+                            record.is_validate = False
                     else:
                         record.is_validate = False
             else:
                 print("NOTHING!!!")
+                record.is_validate = False
