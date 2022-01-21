@@ -131,7 +131,6 @@ class AccountMove(models.Model):
                             break
                         else:
                             logging.info("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
-                            logging.info(vals)
                             record.is_validate = False
                     else:
                         record.is_validate = False
