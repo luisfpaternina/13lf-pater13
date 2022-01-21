@@ -115,7 +115,7 @@ class AccountMove(models.Model):
                             logging.info("BLOKINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
                             logging.info(s.display_name)
                             for line in s.recurring_invoice_line_ids:
-                                range_number = range(line)
+                                range_number = len(line)
                                 logging.info("aaaaaaaaaaaaaaaaaaaaaaaaaaaa",range_number)
                                 vals = {
                                 'partner_id': s.partner_id.id,
