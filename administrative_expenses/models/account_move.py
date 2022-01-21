@@ -130,7 +130,6 @@ class AccountMove(models.Model):
                             s.write(vals)
                             break
                         else:
-                            logging.info("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
                             record.is_validate = False
                     else:
                         record.is_validate = False
@@ -156,12 +155,9 @@ class AccountMove(models.Model):
                                 'uom_id': s.recurring_invoice_line_ids.uom_id.id,
                                 })]
                             }
-                            logging.info("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
-                            logging.info(vals)
                             s.write(vals)
                             break
                         else:
-                            logging.info("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
                             record.is_validate = False
                     else:
                         record.is_validate = False
