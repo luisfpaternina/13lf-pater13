@@ -103,9 +103,6 @@ class AccountMove(models.Model):
     def _validate_subscription(self):
         for record in self:
             if record.invoice_payment_state == 'paid' and record.is_blocking:
-                logging.info("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
-                logging.info(record.is_blocking)
-                logging.info(record.is_validate_date)
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
                 logging.info("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
@@ -140,9 +137,6 @@ class AccountMove(models.Model):
                     else:
                         record.is_validate = False
             elif record.invoice_payment_state == 'paid' and record.is_validate_date:
-                logging.info("ttttttttttttttttttttttttttttttttttttttttttttttttt")
-                logging.info(record.is_blocking)
-                logging.info(record.is_validate_date)
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
                 logging.info("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
@@ -151,17 +145,18 @@ class AccountMove(models.Model):
                     if sale_obj:
                         record.is_validate = True
                         if s in sale_obj.order_line.subscription_id:
-                            for line in s.recurring_invoice_line_ids:
-                                s.display_name
-                                logging.info(s.display_name)
-                                vals = {
-                                    'product_id': record.expense_product.id,
-                                    'name': record.expense_name,
-                                    'price_unit': record.aditional_value,
-                                    'quantity': 1,
-                                    'uom_id': s.recurring_invoice_line_ids.uom_id.id,
-                                }
-                                s.write(vals)
+                            s.display_name
+                            logging.info(s.display_name)
+                            vals = {
+                            'recurring_invoice_line_ids': [(0, 0, {
+                                'product_id': record.expense_product.id,
+                                'name': record.expense_name,
+                                'price_unit': record.aditional_value,
+                                'quantity': 1,
+                                'uom_id': s.recurring_invoice_line_ids.uom_id.id,
+                                })]
+                            }
+                            s.write(vals)
                             break
                         else:
                             record.is_validate = False
