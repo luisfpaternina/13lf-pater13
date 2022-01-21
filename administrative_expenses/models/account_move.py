@@ -102,7 +102,7 @@ class AccountMove(models.Model):
             if record.invoice_payment_state == 'paid' and record.is_blocking:
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
-                logging.info("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
+                logging.info("BLOCKINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
                 logging.info(subscription_obj)
                 for s in subscription_obj:
                     if sale_obj:
@@ -136,7 +136,7 @@ class AccountMove(models.Model):
             elif record.invoice_payment_state == 'paid' and record.is_validate_date:
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
-                logging.info("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
+                logging.info("GASTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
                 logging.info(subscription_obj)
                 for s in subscription_obj:
                     if sale_obj:
