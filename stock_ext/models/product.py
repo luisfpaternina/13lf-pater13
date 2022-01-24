@@ -1,4 +1,5 @@
 from odoo import models, fields, api, _
+import logging
 
 
 class ProductProduct(models.Model):
