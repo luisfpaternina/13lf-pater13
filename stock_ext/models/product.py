@@ -7,7 +7,7 @@ class ProductProduct(models.Model):
     codigo_ncm = fields.Char(string="Codigo NCM")
 
 
-    @api.onchange('codigo_ncm'):
+    @api.onchange('codigo_ncm')
     def _onchange_ncm(self):
         product_obj = self.env['product.template'].search([('name', '=', self.name)],limit=1)
         if product_obj:
@@ -25,7 +25,7 @@ class ProductTemplate(models.Model):
     codigo_ncm = fields.Char(string="Codigo NCM")
 
 
-    @api.onchange('codigo_ncm'):
+    @api.onchange('codigo_ncm')
     def _onchange_ncm(self):
         product_obj = self.env['product.product'].search([('name', '=', self.name)],limit=1)
         if product_obj:
