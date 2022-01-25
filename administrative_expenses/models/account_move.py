@@ -154,7 +154,6 @@ class AccountMove(models.Model):
                                 })]
                             }
                             s.write(vals)
-                            logging.info()
                             break
                         else:
                             record.is_validate = False
