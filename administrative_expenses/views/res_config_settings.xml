@@ -1,81 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>     
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <data>
 
-        <record id="view_administrative_parameters_tree" model="ir.ui.view">
-            <field name="name">administrative.parameters.tree</field>
-            <field name="model">administrative.parameters</field>
-            <field name="priority" eval="8" />
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="name"/>
-                </tree>
-            </field>
-        </record>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">certificate_planer.res.config.settings.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Certificate Planner" string="Certificate Planner" data-key="certificate_planer">
+                    
+                    <h2>Demand Planner</h2>
+                    <div class="row mt16 o_settings_container" id="certificate_planer_setting_container">
+                        <div class="col-12 col-lg-12 o_setting_box" id="certificate_planer_text_block">
+                            
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Text blocks for MDL report.
+                                </div>
+                                <div class="content-group">
 
-        <record id="view_administrative_parameters_form" model="ir.ui.view">
-            <field name="name">administrative.parameters.form</field>
-            <field name="model">administrative.parameters</field>
-            <field name="priority" eval="8" />
-            <field name="arch" type="xml">
-                <form string="delegation_form">
-                    <sheet>
-                        <div class="oe_title">
-                            <h1>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <field name="name" required="1" placeholder="Name"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </h1>
+                                    <div class="row mt16">
+                                        <label class="col-lg-3 o_light_label" string="Title Page Text" for="title_page_text"/>
+                                        <field name="title_page_text" class="oe_inline" style="width: 70% !important;"/>
+                                    </div>
+
+                                    <div class="row mt16">
+                                        <label class="col-lg-3 o_light_label" string="Footer Text" for="footer_text"/>
+                                        <field name="footer_text" class="oe_inline" style="width: 70% !important;"/>
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
-                        <group>
-                            <group>
-                                <field name="active"/>
-                            </group>
-                            <group>
-                                <field name="valite" invisible="1"/>
-                                <field name="create_date"/>
-                                <field name="__last_update"/>
-                            </group>
-                            <group>
-                                <field name="expense_name"/>
-                                <field name="expense_days"/>
-                                <field name="percentage"/>
-                            </group>
-                            <group>
-                                
-                            </group>
-                        </group>
-                    </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers"/>
-                        <field name="message_ids" widget="mail_thread"/>
                     </div>
-                </form>
-            </field>
-        </record>
 
-        <record model="ir.actions.act_window" id="action_view_administrative_parameters">
-            <field name="name">Administrative parameters</field>
-            <field name="res_model">administrative.parameters</field>
-            <field name="view_mode">tree,form</field>
-            <field name="domain">[]</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                    Create new record
-                </p>
-            </field>
-        </record>
+                </div>
+            </xpath>
+        </field>
+    </record>
 
-        <menuitem 
-            id="menu_administrative_parameters" 
-            name="Administrative parameters" 
-            parent="account.menu_finance_configuration"
-            action="action_view_administrative_parameters"
-            />
-
-    </data>
-</odoo> 
+</odoo>
