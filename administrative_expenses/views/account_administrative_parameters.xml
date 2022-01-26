@@ -41,7 +41,8 @@
                                 <field name="__last_update"/>
                             </group>
                             <group>
-                                
+                                <field name="expense_name"/>
+                                <field name="expense_days"/>
                             </group>
                             <group>
                                 
