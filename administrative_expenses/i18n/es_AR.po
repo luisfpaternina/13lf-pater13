@@ -70,7 +70,7 @@ msgstr "Asientos contables"
 #. module: administrative_expenses
 #: model:ir.model.fields,field_description:administrative_expenses.field_res_config_settings__late_charge
 msgid "Late charge"
-msgstr "Cargo por pago fuera de término"
+msgstr "Nombre"
 
 #. module: administrative_expenses
 #: model:ir.model.fields,field_description:administrative_expenses.field_res_config_settings__late_charge_days
@@ -85,7 +85,7 @@ msgstr "%"
 #. module: administrative_expenses
 #: model:ir.model.fields,field_description:administrative_expenses.field_res_config_settings__late_fee
 msgid "Late fee"
-msgstr "Cargo por mora"
+msgstr "Nombre"
 
 #. module: administrative_expenses
 #: model:ir.model.fields,field_description:administrative_expenses.field_res_config_settings__late_fee_days
