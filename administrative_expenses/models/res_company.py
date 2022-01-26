@@ -3,20 +3,27 @@ from odoo import models, fields, api, _
 class ResCompany(models.Model):
     _inherit = 'res.company'
 
+    title_page_text = fields.Char(
+        string='Title Page Text',
+        config_parameter='certificate_planer.title_page_text')
+    footer_text = fields.Char(
+        string='Footer Text',
+        config_parameter='certificate_planer.footer_text')
     late_charge = fields.Char(
         string="Late charge",
-        related="company_id.late_charge")
+        default="Cargo por pago fuera de término")
     late_charge_value = fields.Float(
         string="Late charge value",
-        related="company_id.late_charge_value")
+        default=10)
     late_charge_days = fields.Integer(
-        string="Late charge days")
+        string="Late charge days",
+        default=5)
     late_fee = fields.Char(
         string="Late fee",
-        related="company_id.late_fee")
+        default="Cargo por mora")
     late_fee_value = fields.Float(
         string="Late fee value",
-        related="company_id.late_fee_value")
+        default=15)
     late_fee_days = fields.Integer(
         string="Late fee days",
-        related="company_id.late_fee_days")
+        default=30)
