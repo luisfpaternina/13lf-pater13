@@ -37,6 +37,8 @@
                             </group>
                             <group>
                                 <field name="valite" invisible="1"/>
+                                <field name="create_date"/>
+                                <field name="__last_update"/>
                             </group>
                             <group>
                                 
