@@ -38,7 +38,7 @@
                 </div>
             </xpath>
             -->
-            <xpath expr="//div[1]/h2[2]" position="before">
+            <xpath expr="//div[@id='invoicing_settings']" position="after">
                 <h2>Administrative expenses</h2>
                 <div class="row mt16 o_settings_container">
                     <div class="col-12 col-lg-6 o_setting_box">
