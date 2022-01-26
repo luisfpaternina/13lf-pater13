@@ -20,6 +20,8 @@ class AccountAdministrativeParameters(models.Model):
         string="Expense name")
     expense_days = fields.Integer(
         string="Expense days")
+    percentage = fields.Float(
+        string="Percentage")
 
 
     @api.onchange('name')
