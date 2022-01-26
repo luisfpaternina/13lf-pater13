@@ -12,12 +12,16 @@
                 <div class="row mt16 o_settings_container">
                     <div class="col-12 col-lg-6 o_setting_box">
                         <div class="o_setting_right_pane">
-                            <label for="title_page_text" class="col-sm-2 o_light_label"/>
-                            <field name="title_page_text"/>
+                            <label for="late_charge" class="col-sm-2 o_light_label"/>
+                            <field name="late_charge"/>
+                            <field name="late_charge_value"/>
+                            <field name="late_charge_days"/>
                         </div>
                         <div class="o_setting_right_pane">
-                            <label for="title_page_text" class="col-sm-2 o_light_label"/>
-                            <field name="title_page_text"/>
+                            <label for="late_fee" class="col-sm-2 o_light_label"/>
+                            <field name="late_fee"/>
+                            <field name="late_fee_value"/>
+                            <field name="late_fee_days"/>
                         </div>
                     </div>
                 </div>
