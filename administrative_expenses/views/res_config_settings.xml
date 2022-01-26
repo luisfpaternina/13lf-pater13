@@ -23,6 +23,8 @@
                             <label for="late_charge_days" class="col-sm-2 o_light_label"/>
                             <field name="late_charge_days"/>
                         </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box">
                         <div class="o_setting_right_pane">
                             <label for="late_fee" class="col-sm-2 o_light_label"/>
                             <field name="late_fee"/>
@@ -32,12 +34,6 @@
                             <field name="late_fee_value"/>
                         </div>
                         <div class="o_setting_right_pane">
-                            <label for="late_fee_days" class="col-sm-2 o_light_label"/>
-                            <field name="late_fee_days"/>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6 o_setting_box">
-                         <div class="o_setting_right_pane">
                             <label for="late_fee_days" class="col-sm-2 o_light_label"/>
                             <field name="late_fee_days"/>
                         </div>
