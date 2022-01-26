@@ -36,6 +36,9 @@ class AccountMove(models.Model):
 
     @api.depends('days_difference')
     def _get_expenses_names(self):
+        settings_obj = self.env['res.config.settings'].search([])
+        logging.info("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+        logging.info(settings_obj)
         for record in self:
             late_charge = record.env.company.late_charge
             late_charge_value = record.env.company.late_charge_value
