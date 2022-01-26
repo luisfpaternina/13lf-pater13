@@ -13,3 +13,6 @@ class AccountAdministrativeParameters(models.Model):
         string="Name")
     active = fields.Boolean(
         string="Active")
+    valite = fields.Char(
+        string="Validate",
+        default="1")
