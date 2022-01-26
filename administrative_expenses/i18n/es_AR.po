@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-26 13:55+0000\n"
-"PO-Revision-Date: 2022-01-26 13:55+0000\n"
+"POT-Creation-Date: 2022-01-26 15:20+0000\n"
+"PO-Revision-Date: 2022-01-26 15:20+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -80,7 +80,13 @@ msgid "Display Name"
 msgstr "Nombre"
 
 #. module: administrative_expenses
+#: model:ir.model.fields,field_description:administrative_expenses.field_administrative_parameters__expense_days
+msgid "Expense days"
+msgstr ""
+
+#. module: administrative_expenses
 #: model:ir.model.fields,field_description:administrative_expenses.field_account_move__expense_name
+#: model:ir.model.fields,field_description:administrative_expenses.field_administrative_parameters__expense_name
 msgid "Expense name"
 msgstr "Nombre gasto administrativo"
 
@@ -211,6 +217,11 @@ msgstr "Etiquetas del contacto"
 #: model:ir.model.fields,field_description:administrative_expenses.field_account_move__aditional_payment_date
 msgid "Payment date"
 msgstr "Fecha de pago"
+
+#. module: administrative_expenses
+#: model:ir.model.fields,field_description:administrative_expenses.field_administrative_parameters__percentage
+msgid "Percentage"
+msgstr ""
 
 #. module: administrative_expenses
 #: model:ir.model.fields,field_description:administrative_expenses.field_account_move__expense_product
