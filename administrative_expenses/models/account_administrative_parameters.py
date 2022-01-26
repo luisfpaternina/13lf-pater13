@@ -16,3 +16,7 @@ class AccountAdministrativeParameters(models.Model):
     valite = fields.Char(
         string="Validate",
         default="1")
+
+    _sql_constraints = [
+        ('validate_uniq', 'unique (valite)','You can add one record in this model!')
+    ]
