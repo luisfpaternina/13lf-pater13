@@ -43,8 +43,8 @@
                 <div class="row mt16 o_settings_container">
                     <div class="col-12 col-lg-6 o_setting_box">
                         <div class="o_setting_right_pane">
-                            <label for="namr" class="col-sm-2 o_light_label"/>
-                                        
+                            <label for="title_page_text" class="col-sm-2 o_light_label"/>
+                            <field name="title_page_text"/>
                         </div>
                     </div>
                 </div>
