@@ -36,13 +36,19 @@ class AccountMove(models.Model):
 
     @api.depends('days_difference')
     def _get_expenses_names(self):
+        late_charge = self.env.company.late_charge
+        late_charge_value = self.env.company.late_charge_value
+        late_charge_days = self.env.company.late_charge_days
+        late_fee = self.env.company.late_fee
+        late_fee_value = self.env.company.late_fee_value
+        late_fee_days = self.env.company.late_fee_days
         for record in self:
             if record.is_blocking:
                 record.expense_name = 'Costo de bloqueo modem'
             elif record.days_difference <= 10:
-                record.expense_name = 'Cargo por pago fuera de término'
+                record.expense_name = late_charge
             elif record.days_difference >= 30:
-                record.expense_name = 'Cargo por mora'
+                record.expense_name = late_fee
             else:
                 record.expense_name = ' '
 
