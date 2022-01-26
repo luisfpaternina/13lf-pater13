@@ -262,7 +262,7 @@ msgstr ""
 #. module: administrative_expenses
 #: model:ir.model.constraint,message:administrative_expenses.constraint_administrative_parameters_validate_uniq
 msgid "You can add one record in this model!"
-msgstr ""
+msgstr "Solo se puede agregar un registro en este modelo!"
 
 #. module: administrative_expenses
 #: model_terms:ir.ui.view,arch_db:administrative_expenses.view_administrative_parameters_form
