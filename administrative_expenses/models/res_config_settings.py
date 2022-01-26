@@ -23,6 +23,8 @@ class ResConfigSettings(models.TransientModel):
         string="Late fee",
         default="Cargo por mora")
     late_fee_value = fields.Float(
-        string="Late fee value")
+        string="Late fee value",
+        default=15)
     late_fee_days = fields.Integer(
-        string="Late fee days")
+        string="Late fee days",
+        default=30)
