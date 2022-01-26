@@ -16,7 +16,7 @@ class AccountAdministrativeParameters(models.Model):
     valite = fields.Char(
         string="Validate",
         default="1")
-    
+
 
     @api.onchange('name')
     def _upper_name(self):        
