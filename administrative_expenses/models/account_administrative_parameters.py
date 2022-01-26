@@ -16,6 +16,10 @@ class AccountAdministrativeParameters(models.Model):
     valite = fields.Char(
         string="Validate",
         default="1")
+    expense_name = fields.Char(
+        string="Expense name")
+    expense_days = fields.Integer(
+        string="Expense days")
 
 
     @api.onchange('name')
