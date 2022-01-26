@@ -38,6 +38,7 @@
         'data/product.template.csv',
         'views/account_move.xml',
         'views/res_partner.xml',
+        'views/res_config_settings.xml',
                    
     ],
     'installable': True
