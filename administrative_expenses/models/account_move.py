@@ -38,6 +38,7 @@ class AccountMove(models.Model):
     def _get_expenses_names(self):
         settings_obj = self.env['res.config.settings'].search([])
         logging.info("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+        logging.info(record.env.company)
         logging.info(record.env)
         for record in self:
             late_charge = record.env.company.late_charge
