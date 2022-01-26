@@ -35,7 +35,7 @@
     'data': [
 
         'security/security.xml',
-        #'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'data/account.tax.csv',
         'data/product.template.csv',
         'views/account_move.xml',
