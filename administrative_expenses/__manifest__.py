@@ -40,7 +40,6 @@
         'data/product.template.csv',
         'views/account_move.xml',
         'views/res_partner.xml',
-        'views/account_administrative_parameters.xml',
                    
     ],
     'installable': True
