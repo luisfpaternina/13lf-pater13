@@ -80,7 +80,7 @@ msgstr "Días"
 #. module: administrative_expenses
 #: model:ir.model.fields,field_description:administrative_expenses.field_res_config_settings__late_charge_value
 msgid "Late charge value"
-msgstr "Porcentaje"
+msgstr "%"
 
 #. module: administrative_expenses
 #: model:ir.model.fields,field_description:administrative_expenses.field_res_config_settings__late_fee
@@ -95,7 +95,7 @@ msgstr "Días"
 #. module: administrative_expenses
 #: model:ir.model.fields,field_description:administrative_expenses.field_res_config_settings__late_fee_value
 msgid "Late fee value"
-msgstr "Porcentaje"
+msgstr "%"
 
 #. module: administrative_expenses
 #: model:ir.model,name:administrative_expenses.model_res_partner_category
