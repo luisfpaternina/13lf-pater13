@@ -36,7 +36,7 @@
                                 <field name="active"/>
                             </group>
                             <group>
-        
+                                <field name="valite" invisible="1"/>
                             </group>
                             <group>
                                 
