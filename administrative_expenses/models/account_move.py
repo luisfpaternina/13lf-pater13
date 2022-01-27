@@ -3,7 +3,6 @@ from datetime import datetime
 from datetime import date
 import logging
 
-
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
