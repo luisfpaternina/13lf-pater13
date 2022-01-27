@@ -11,8 +11,7 @@ class AccountMove(models.Model):
         string="Validate",
         compute="_validate_subscription")
     is_validate_date = fields.Boolean(
-        string="Validate dates",
-        compute="_validate_dates")
+        string="Validate dates")
     aditional_value = fields.Float(
         string="Aditional value",
         compute="_calculate_aditional_value")
