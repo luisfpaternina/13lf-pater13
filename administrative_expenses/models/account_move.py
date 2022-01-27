@@ -172,7 +172,7 @@ class AccountMove(models.Model):
                             record.is_validate = False
                     else:
                         record.is_validate = False
-            elif record.invoice_payment_state == 'paid' and not record.is_validate_date:
+            elif record.invoice_payment_state == 'paid' and record.is_validate_date == False:
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
                 for s in subscription_obj:
