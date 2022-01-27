@@ -183,6 +183,7 @@ class AccountMove(models.Model):
                                     logging.info("....................................................................")
                                     sus_line.unlink()
                                     logging.info("00000000000000000000000000000000000000000000payr")
+                                    record.is_validate = False
                                 else:
                                     record.is_validate = False
                         else:
