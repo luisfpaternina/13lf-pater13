@@ -11,7 +11,8 @@ class AccountMove(models.Model):
         string="Validate",
         compute="_validate_subscription")
     is_validate_date = fields.Boolean(
-        string="Validate dates")
+        string="Validate dates",
+        compute="_validate_dates")
     aditional_value = fields.Float(
         string="Aditional value",
         compute="_calculate_aditional_value")
@@ -92,7 +93,7 @@ class AccountMove(models.Model):
             self.aditional_value = 0.0
 
 
-    @api.onchange(
+    @api.depends(
         'aditional_payment_date',
         'invoice_date_due',
         'state',
