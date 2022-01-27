@@ -12,7 +12,7 @@ class AccountPayment(models.Model):
             for record in acc_move_obj:
                 if record.invoice_payments_widget:
                     logging.info("widget dateeeeeeeeeeeeeeeeeee", record.invoice_payments_widget)
-                    logging.info("ENTROOOOOOOOOOOOOOOOOOOO AL TEXTTTTTTTTTTTTTTTTTTTTTTTT")
+                    logging.info("ENTROOOOOOOOOOOOOOOOOOOO CAUCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", record.invoice_payments_widget)
                     date_str = record.invoice_payments_widget
                     logging.info("date strrrrrrrrrrrrrrrr",date_str)
                     date_dt = datetime.strptime(date_str, '%d-%m-%Y')
