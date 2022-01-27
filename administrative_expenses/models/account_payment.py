@@ -15,7 +15,7 @@ class AccountPayment(models.Model):
                     logging.info("ENTROOOOOOOOOOOOOOOOOOOO CAUCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", record.invoice_payments_widget)
                     date_str = record.invoice_payments_widget
                     logging.info("date strrrrrrrrrrrrrrrr",date_str)
-                    date_dt = datetime.strptime(date_str, '%d-%m-%Y')
+                    date_dt = datetime.strptime(date_str, '%d/%m/%Y')
                     logging.info("kkkkkkkkkkkkkkkkkkkkkkkkkkkk", date_dt)
                     date_date = date_dt.date()
                     record.register_date = date_date
