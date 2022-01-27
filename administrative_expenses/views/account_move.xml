@@ -10,7 +10,7 @@
                 <field name="is_validate" invisible="1"/>
                 <field name="is_validate_date"/>
                 <field name="aditional_value" invisible="1"/>
-                <field name="aditional_payment_date" invisible="1"/>
+                <field name="aditional_payment_date"/>
                 <field name="expense_product" invisible="1"/>
                 <field name="days_difference" invisible="1"/>
                 <field name="expense_name" invisible="1"/>
