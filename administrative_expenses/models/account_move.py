@@ -32,7 +32,7 @@ class AccountMove(models.Model):
     register_date = fields.Date(
         string="Register date")
 
-
+    """
     @api.onchange('invoice_payments_widget')
     def _onchange_payment_date_widget(self):
         for record in self:
@@ -46,6 +46,7 @@ class AccountMove(models.Model):
                 record.register_date = date_date
                 logging.info("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                 logging.info(record.register_date)
+    """
 
 
     @api.depends('days_difference')
