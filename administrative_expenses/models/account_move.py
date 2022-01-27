@@ -16,8 +16,7 @@ class AccountMove(models.Model):
         string="Aditional value",
         compute="_calculate_aditional_value")
     aditional_payment_date = fields.Date(
-        string="Payment date",
-        compute="_calculate_payment_date")
+        string="Payment date")
     expense_product = fields.Many2one(
         'product.template',
         string="Product",
@@ -71,7 +70,7 @@ class AccountMove(models.Model):
             self.expense_product = False
 
 
-    @api.depends(
+    @api.onchange(
         'aditional_payment_date',
         'invoice_date_due',
         'state',
