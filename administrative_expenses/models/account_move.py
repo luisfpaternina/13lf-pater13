@@ -34,6 +34,13 @@ class AccountMove(models.Model):
         string="Register date")
 
 
+    @api.onchange('invoice_payments_widget')
+    def _onchange_payment_date_widget(self):
+        for record in self:
+            if record.invoice_payments_widget:
+                record.register_date = datetime.strptime(invoice_payments_widget, '%d/%m/%y')
+
+
     @api.depends('days_difference')
     def _get_expenses_names(self):
         settings_obj = self.env['res.config.settings'].search([])
