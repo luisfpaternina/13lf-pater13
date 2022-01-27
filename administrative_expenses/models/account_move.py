@@ -183,6 +183,7 @@ class AccountMove(models.Model):
                                 if sus_line.product_id.name == 'Gasto administrativo':
                                     logging.info("....................................................................")
                                     sus_line.unlink()
+                                    logging.info("00000000000000000000000000000000000000000000payr")
                                 else:
                                     record.is_validate = False
                         else:
