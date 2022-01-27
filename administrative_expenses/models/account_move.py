@@ -204,5 +204,4 @@ class AccountMove(models.Model):
                     else:
                         record.is_validate = False
             else:
-                print("NOTHING!!!")
                 record.is_validate = False
