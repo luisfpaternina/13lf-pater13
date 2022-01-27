@@ -11,7 +11,8 @@ class AccountMove(models.Model):
         string="Validate",
         compute="_validate_subscription")
     is_validate_date = fields.Boolean(
-        string="Validate dates")
+        string="Validate dates",
+        compute="_validate_dates")
     aditional_value = fields.Float(
         string="Aditional value",
         compute="_calculate_aditional_value")
@@ -92,15 +93,22 @@ class AccountMove(models.Model):
             self.aditional_value = 0.0
 
 
-    #@api.depends('aditional_payment_date','invoice_date_due')
+    @api.depends('aditional_payment_date','invoice_date_due','state')
     def _validate_dates(self):
-        if self.aditional_payment_date and self.invoice_date_due:
-            if self.aditional_payment_date > self.invoice_date_due:
-                self.is_validate_date = True
+        for record in self:
+            if record.aditional_payment_date and record.invoice_date_due:
+                logging.info("CAMPOS DE FECHAS LLENOSSSSSSSSSSSSSSSSSSSSSS")
+                if record.aditional_payment_date > record.invoice_date_due:
+                    record.is_validate_date = True
+                    logging.info("TRUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+                elif record.aditional_payment_date < record.invoice_date_due:
+                    record.is_validate_date = False
+                    logging.info("FALSEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+                else:
+                    record.is_validate_date = False
+                    logging.info("ELSEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
             else:
-                self.is_validate_date = False
-        else:
-            self.is_validate_date = False
+                record.is_validate_date = False
 
 
     def _validate_subscription(self):
