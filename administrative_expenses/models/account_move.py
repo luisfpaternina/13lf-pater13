@@ -1,6 +1,5 @@
 from odoo import models, fields, api, _
-from datetime import datetime
-from datetime import date
+from datetime import datetime, date
 import logging
 
 class AccountMove(models.Model):
@@ -38,7 +37,10 @@ class AccountMove(models.Model):
     def _onchange_payment_date_widget(self):
         for record in self:
             if record.invoice_payments_widget:
-                record.register_date = datetime.strptime(invoice_payments_widget, '%d/%m/%y')
+                date_str = record.invoice_payments_widget
+                date_dt = datetime.strptime(date_str, '%d-%m-%Y')
+                date_date = date_dt.date()
+                record.register_date = date_date
 
 
     @api.depends('days_difference')
