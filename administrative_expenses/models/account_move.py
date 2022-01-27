@@ -72,8 +72,8 @@ class AccountMove(models.Model):
     @api.depends('aditional_payment_date','invoice_date_due')
     def _compute_difference(self):
         for rec in self:
-            if rec.aditional_payment_date and rec.invoice_date_due:
-                rec.days_difference = (rec.aditional_payment_date - rec.invoice_date_due).days
+            if rec.register_date and rec.invoice_date_due:
+                rec.days_difference = (rec.register_date - rec.invoice_date_due).days
             else:
                 rec.days_difference = 0
 
@@ -102,12 +102,12 @@ class AccountMove(models.Model):
             self.aditional_payment_date = False
 
 
-    @api.depends('aditional_payment_date','invoice_date_due')
+    @api.depends('register_date','invoice_date_due')
     def _calculate_aditional_value(self):
-        if self.aditional_payment_date and self.invoice_date_due:
-            if self.aditional_payment_date > self.invoice_date_due and self.days_difference < 10:
+        if self.register_date and self.invoice_date_due:
+            if self.register_date > self.invoice_date_due and self.days_difference < 10:
                 self.aditional_value = self.amount_untaxed * 0.10
-            elif self.aditional_payment_date > self.invoice_date_due and self.days_difference >= 30:
+            elif self.register_date > self.invoice_date_due and self.days_difference >= 30:
                 self.aditional_value = self.amount_untaxed * 0.15
             else:
                 self.aditional_value = 0.0
@@ -116,7 +116,7 @@ class AccountMove(models.Model):
 
 
     @api.depends(
-        'aditional_payment_date',
+        'register_date',
         'invoice_date_due',
         'state',
         'invoice_payment_term_id',
@@ -124,12 +124,12 @@ class AccountMove(models.Model):
         'name')
     def _validate_dates(self):
         for record in self:
-            if record.aditional_payment_date and record.invoice_date_due:
+            if record.register_date and record.invoice_date_due:
                 logging.info("CAMPOS DE FECHAS LLENOSSSSSSSSSSSSSSSSSSSSSS")
-                if record.aditional_payment_date > record.invoice_date_due:
+                if record.register_date > record.invoice_date_due:
                     record.is_validate_date = True
                     logging.info("TRUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-                elif record.aditional_payment_date <= record.invoice_date_due:
+                elif record.register_date <= record.invoice_date_due:
                     record.is_validate_date = False
                     logging.info("FALSEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
                 else:
