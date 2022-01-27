@@ -93,7 +93,7 @@ class AccountMove(models.Model):
             self.aditional_value = 0.0
 
 
-    @api.depends('aditional_payment_date','invoice_date_due')
+    #@api.depends('aditional_payment_date','invoice_date_due')
     def _validate_dates(self):
         if self.aditional_payment_date and self.invoice_date_due:
             if self.aditional_payment_date > self.invoice_date_due:
