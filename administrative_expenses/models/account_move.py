@@ -106,7 +106,7 @@ class AccountMove(models.Model):
                 if record.aditional_payment_date > record.invoice_date_due:
                     record.is_validate_date = True
                     logging.info("TRUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-                elif record.aditional_payment_date < record.invoice_date_due:
+                elif record.aditional_payment_date <= record.invoice_date_due:
                     record.is_validate_date = False
                     logging.info("FALSEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
                 else:
@@ -152,7 +152,7 @@ class AccountMove(models.Model):
                             record.is_validate = False
                     else:
                         record.is_validate = False
-            elif record.invoice_payment_state == 'paid' and record.aditional_payment_date > record.invoice_date_due:
+            elif record.invoice_payment_state == 'paid' and record.is_validate_date:
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
                 logging.info("GASTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
@@ -181,7 +181,7 @@ class AccountMove(models.Model):
                             record.is_validate = False
                     else:
                         record.is_validate = False
-            elif record.invoice_payment_state == 'paid' and record.aditional_payment_date < record.invoice_date_due:
+            elif record.invoice_payment_state == 'paid' and record.is_validate_date == False:
                 logging.info("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
