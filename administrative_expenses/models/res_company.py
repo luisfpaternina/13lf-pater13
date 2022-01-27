@@ -27,3 +27,7 @@ class ResCompany(models.Model):
     late_fee_days = fields.Integer(
         string="Late fee days",
         default=30)
+    block_name = fields.Char(
+        string="Name")
+    block_value = fields.Float(
+        string="Value")

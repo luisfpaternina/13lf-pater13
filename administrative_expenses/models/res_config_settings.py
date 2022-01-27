@@ -21,3 +21,7 @@ class ResConfigSettings(models.TransientModel):
     late_fee_days = fields.Integer(
         string="Late fee days",
         related="company_id.late_fee_days")
+    block_name = fields.Char(
+        string="Name")
+    block_value = fields.Float(
+        string="Value")
