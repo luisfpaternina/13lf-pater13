@@ -11,6 +11,7 @@ class AccountPayment(models.Model):
         if acc_move_obj:
             for record in acc_move_obj:
                 if record.invoice_payments_widget:
+                    logging.info("widget dateeeeeeeeeeeeeeeeeee", record.invoice_payments_widget)
                     logging.info("ENTROOOOOOOOOOOOOOOOOOOO AL TEXTTTTTTTTTTTTTTTTTTTTTTTT")
                     date_str = record.invoice_payments_widget
                     logging.info("date strrrrrrrrrrrrrrrr",date_str)
