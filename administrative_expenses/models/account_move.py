@@ -71,6 +71,13 @@ class AccountMove(models.Model):
             self.expense_product = False
 
 
+    @api.depends(
+        'aditional_payment_date',
+        'invoice_date_due',
+        'state',
+        'invoice_payment_term_id',
+        'invoice_date',
+        'name')
     def _calculate_payment_date(self):
         payment_obj = self.env['account.payment'].search([('communication', '=', self.name)],limit=1)
         if payment_obj:
