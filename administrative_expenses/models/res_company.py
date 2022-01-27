@@ -11,7 +11,7 @@ class ResCompany(models.Model):
         config_parameter='certificate_planer.footer_text')
     late_charge = fields.Char(
         string="Late charge",
-        related="company_id.late_charge")
+        default="Cargo por pago fuera de término")
     late_charge_value = fields.Float(
         string="Late charge value",
         default=10)

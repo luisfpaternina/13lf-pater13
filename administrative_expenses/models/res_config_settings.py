@@ -5,7 +5,8 @@ class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
 
     late_charge = fields.Char(
-        string="Late charge")
+        string="Late charge",
+        related="company_id.late_charge")
     late_charge_value = fields.Float(
         string="Late charge value",
         related="company_id.late_charge_value")
