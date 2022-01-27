@@ -123,6 +123,7 @@ class AccountMove(models.Model):
                             s.display_name
                             c = 1
                             for line in s.recurring_invoice_line_ids:
+                                #if len(s.recurring_invoice_line_ids) > 1:
                                 range_number = len(s.recurring_invoice_line_ids)
                                 if c < range_number:
                                     quantity = 1
@@ -155,7 +156,7 @@ class AccountMove(models.Model):
                         record.is_validate = True
                         if s in sale_obj.order_line.subscription_id:
                             s.display_name
-                            logging.info(s.display_name)
+    
                             vals = {
                             'recurring_invoice_line_ids': [(0, 0, {
                                 'product_id': record.expense_product.id,
@@ -167,6 +168,23 @@ class AccountMove(models.Model):
                             }
                             s.write(vals)
                             break
+                        else:
+                            record.is_validate = False
+                    else:
+                        record.is_validate = False
+            elif record.invoice_payment_state == 'paid' and not record.is_validate_date:
+                sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
+                subscription_obj = record.env['sale.subscription'].search([])
+                for s in subscription_obj:
+                    if sale_obj:
+                        record.is_validate = True
+                        if s in sale_obj.order_line.subscription_id:
+                            s.display_name
+                            for sus_line in s.recurring_invoice_line_ids:
+                                if sus_line.product_id.name == 'Gasto administrativo':
+                                    sus_line.unlink()
+                                else:
+                                    record.is_validate = False
                         else:
                             record.is_validate = False
                     else:
