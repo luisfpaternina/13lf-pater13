@@ -44,11 +44,6 @@ class AccountMove(models.Model):
             late_fee = record.env.company.late_fee
             late_fee_value = record.env.company.late_fee_value
             late_fee_days = record.env.company.late_fee_days
-            logging.info("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
-            logging.info(record.env.company)
-            logging.info(record.env)
-            logging.info(late_charge)
-            logging.info(late_fee)
             if record.is_blocking:
                 record.expense_name = 'Costo de bloqueo modem'
             elif record.days_difference <= 10:
@@ -152,22 +147,25 @@ class AccountMove(models.Model):
                 logging.info("GASTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
                 logging.info(subscription_obj)
                 for s in subscription_obj:
+                    logging.info("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
                     if sale_obj:
                         record.is_validate = True
                         if s in sale_obj.order_line.subscription_id:
                             s.display_name
-    
-                            vals = {
-                            'recurring_invoice_line_ids': [(0, 0, {
-                                'product_id': record.expense_product.id,
-                                'name': record.expense_name,
-                                'price_unit': record.aditional_value,
-                                'quantity': 1,
-                                'uom_id': s.recurring_invoice_line_ids.uom_id.id,
-                                })]
-                            }
-                            s.write(vals)
-                            break
+                            if len(s.recurring_invoice_line_ids) < 2:
+                                vals = {
+                                'recurring_invoice_line_ids': [(0, 0, {
+                                    'product_id': record.expense_product.id,
+                                    'name': record.expense_name,
+                                    'price_unit': record.aditional_value,
+                                    'quantity': 1,
+                                    'uom_id': s.recurring_invoice_line_ids.uom_id.id,
+                                    })]
+                                }
+                                s.write(vals)
+                                break
+                            else:
+                                record.is_validate = False
                         else:
                             record.is_validate = False
                     else:
