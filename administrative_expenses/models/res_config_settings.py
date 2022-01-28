@@ -6,8 +6,7 @@ class ResConfigSettings(models.TransientModel):
 
     late_charge = fields.Char(
         string="Late charge",
-        default="Cargo por pago fuera de término",
-        config_parameter='administrative_expenses.late_charge')
+        default="Cargo por pago fuera de término")
     late_charge_value = fields.Float(
         string="Late charge value",
         default=10)
