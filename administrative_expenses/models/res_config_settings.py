@@ -35,3 +35,19 @@ class ResConfigSettings(models.TransientModel):
     rejected_value = fields.Float(
         string="Value",
         default=500)
+
+
+    def set_values(self):
+        res = super(ResConfigSettings, self).set_values()
+        self.env['ir.config_parameter'].set_param('administrative_expenses.late_charge', self.late_charge)
+        return res
+
+    @api.model
+    def get_values(self):
+        res = super(ResConfigSettings, self).get_values()
+        ICPSudo = self.env['ir.config_parameter'].sudo()
+        late_charges = ICPSudo.get_param('administrative_expenses.late_charge')
+        res.update(
+            late_charges=
+        )
+        return res
