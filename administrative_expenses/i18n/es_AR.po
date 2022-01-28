@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-28 15:45+0000\n"
-"PO-Revision-Date: 2022-01-28 15:45+0000\n"
+"POT-Creation-Date: 2022-01-28 19:54+0000\n"
+"PO-Revision-Date: 2022-01-28 19:54+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -76,11 +76,6 @@ msgstr "Días"
 #: model:ir.model.fields,field_description:administrative_expenses.field_account_move__expense_name
 msgid "Expense name"
 msgstr "Nombre gasto administrativo"
-
-#. module: administrative_expenses
-#: model:ir.model.fields,field_description:administrative_expenses.field_res_company__footer_text
-msgid "Footer Text"
-msgstr ""
 
 #. module: administrative_expenses
 #: model:product.template,name:administrative_expenses.id_administrative_expense
@@ -159,11 +154,6 @@ msgstr "Producto"
 #: model:ir.model.fields,field_description:administrative_expenses.field_account_move__register_date
 msgid "Register date"
 msgstr "Fecha de registro pago"
-
-#. module: administrative_expenses
-#: model:ir.model.fields,field_description:administrative_expenses.field_res_company__title_page_text
-msgid "Title Page Text"
-msgstr ""
 
 #. module: administrative_expenses
 #: model:product.template,uom_name:administrative_expenses.id_administrative_expense
