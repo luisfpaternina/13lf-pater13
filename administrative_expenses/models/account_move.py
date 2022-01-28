@@ -34,7 +34,7 @@ class AccountMove(models.Model):
         string="Register date")
 
     
-    # Función para traer la parametrización(datos) realizada en res.config.settings
+    # Función para traer los datos de la parametrización(datos) realizada en res.config.settings
     @api.depends('days_difference')
     def _get_expenses_names(self):
         settings_obj = self.env['res.config.settings'].search([])
