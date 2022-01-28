@@ -40,6 +40,8 @@ class AccountMove(models.Model):
         settings_obj = self.env['res.config.settings'].search([])
         for record in self:
             settings_late_charge = self.env['ir.config_parameter'].sudo().get_param('late_charge') or False
+            logging.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+            logging.info(settings_late_charge)
             late_charge = record.env.company.late_charge
             late_charge_value = record.env.company.late_charge_value
             late_charge_days = record.env.company.late_charge_days
