@@ -16,14 +16,11 @@ class ResCompany(models.Model):
     late_charge_days = fields.Integer(
         string="Late charge days")
     late_fee = fields.Char(
-        string="Late fee",
-        default="Cargo por mora")
+        string="Late fee")
     late_fee_value = fields.Float(
-        string="Late fee value",
-        default=15)
+        string="Late fee value")
     late_fee_days = fields.Integer(
-        string="Late fee days",
-        default=30)
+        string="Late fee days")
     block_name = fields.Char(
         string="Name")
     block_value = fields.Float(
