@@ -13,7 +13,7 @@
                     <div class="col-12 col-lg-6 o_setting_box">
                         <div class="o_setting_right_pane">
                             <label for="late_charge" class="col-sm-2 o_light_label"/>
-                            <field name="late_charge"/>
+                            <field name="late_charge" placeholder="Cargo por pago fuera de término"/>
                         </div>
                         <div class="o_setting_right_pane">
                             <label for="late_charge_value" class="col-sm-2 o_light_label"/>
