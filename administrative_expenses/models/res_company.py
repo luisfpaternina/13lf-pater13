@@ -3,12 +3,6 @@ from odoo import models, fields, api, _
 class ResCompany(models.Model):
     _inherit = 'res.company'
 
-    title_page_text = fields.Char(
-        string='Title Page Text',
-        config_parameter='certificate_planer.title_page_text')
-    footer_text = fields.Char(
-        string='Footer Text',
-        config_parameter='certificate_planer.footer_text')
     late_charge = fields.Char(
         string="Late charge")
     late_charge_value = fields.Float(
