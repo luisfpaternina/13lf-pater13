@@ -14,8 +14,7 @@ class ResCompany(models.Model):
     late_charge_value = fields.Float(
         string="Late charge value")
     late_charge_days = fields.Integer(
-        string="Late charge days",
-        default=5)
+        string="Late charge days")
     late_fee = fields.Char(
         string="Late fee",
         default="Cargo por mora")

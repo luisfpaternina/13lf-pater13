@@ -11,7 +11,8 @@ class ResConfigSettings(models.TransientModel):
         string="Late charge value",
         default=10)
     late_charge_days = fields.Integer(
-        string="Late charge days")
+        string="Late charge days",
+        default=5)
     late_fee = fields.Char(
         string="Late fee")
     late_fee_value = fields.Float(
