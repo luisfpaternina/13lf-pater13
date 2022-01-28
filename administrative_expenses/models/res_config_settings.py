@@ -48,6 +48,6 @@ class ResConfigSettings(models.TransientModel):
         ICPSudo = self.env['ir.config_parameter'].sudo()
         late_charges = ICPSudo.get_param('administrative_expenses.late_charge')
         res.update(
-            late_charges=
+            late_charge=late_charges
         )
         return res
