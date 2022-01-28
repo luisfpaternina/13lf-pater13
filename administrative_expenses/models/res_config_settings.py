@@ -28,3 +28,9 @@ class ResConfigSettings(models.TransientModel):
     block_value = fields.Float(
         string="Value",
         default=300)
+    block_rejected = fields.Char(
+        string="Name",
+        default="Cargo por débito rechazado")
+    rejected_value = fields.Float(
+        string="Value",
+        default=500)
