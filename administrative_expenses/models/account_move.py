@@ -75,6 +75,7 @@ class AccountMove(models.Model):
             self.expense_product = False
 
 
+    # Función para consultar el valor de la fecha de pago en el wizard de account.payment
     @api.onchange(
         'aditional_payment_date',
         'invoice_date_due',
