@@ -5,6 +5,7 @@ import logging
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
+    # Variables
     is_validate = fields.Boolean(
         string="Validate",
         compute="_validate_subscription")
@@ -32,7 +33,8 @@ class AccountMove(models.Model):
     register_date = fields.Date(
         string="Register date")
 
-
+    
+    # Función para traer la parametrización(datos) realizada en res.config.settings
     @api.depends('days_difference')
     def _get_expenses_names(self):
         settings_obj = self.env['res.config.settings'].search([])
@@ -53,6 +55,7 @@ class AccountMove(models.Model):
                 record.expense_name = ' '
 
 
+    # Función para calcular los días de mora
     @api.depends('aditional_payment_date','invoice_date_due')
     def _compute_difference(self):
         for rec in self:
@@ -62,6 +65,7 @@ class AccountMove(models.Model):
                 rec.days_difference = 0
 
 
+    # Función para traer el producto gasto administrativo el cual se carga en la data del modulo
     @api.depends('name')
     def add_administrative_expense_product(self):
         product_obj = self.env['product.template'].search([('name', '=', 'Gasto administrativo')])
@@ -86,6 +90,7 @@ class AccountMove(models.Model):
             self.aditional_payment_date = False
 
 
+    # Calculo del valor del gasto administrativo dependiendo de los días de mora
     @api.depends('register_date','invoice_date_due')
     def _calculate_aditional_value(self):
         if self.register_date and self.invoice_date_due:
@@ -99,6 +104,7 @@ class AccountMove(models.Model):
             self.aditional_value = 0.0
 
 
+    # Función para comparar fechas: fecha de pago vs plazo de pago
     @api.depends(
         'register_date',
         'invoice_date_due',
@@ -109,20 +115,17 @@ class AccountMove(models.Model):
     def _validate_dates(self):
         for record in self:
             if record.register_date and record.invoice_date_due:
-                logging.info("CAMPOS DE FECHAS LLENOSSSSSSSSSSSSSSSSSSSSSS")
                 if record.register_date > record.invoice_date_due:
                     record.is_validate_date = True
-                    logging.info("TRUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
                 elif record.register_date <= record.invoice_date_due:
                     record.is_validate_date = False
-                    logging.info("FALSEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
                 else:
                     record.is_validate_date = False
-                    logging.info("ELSEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
             else:
                 record.is_validate_date = False
 
 
+    # Función para agregar o eliminar líneas en la suscripción dependiendo el gasto administrativo
     def _validate_subscription(self):
         for record in self:
             if record.invoice_payment_state == 'paid' and record.is_blocking:
