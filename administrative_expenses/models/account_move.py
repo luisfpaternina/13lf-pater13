@@ -56,7 +56,9 @@ class AccountMove(models.Model):
 
 
     # Función para calcular los días de mora
-    @api.depends('aditional_payment_date','invoice_date_due')
+    @api.depends(
+        'aditional_payment_date',
+        'invoice_date_due')
     def _compute_difference(self):
         for rec in self:
             if rec.register_date and rec.invoice_date_due:
@@ -92,7 +94,9 @@ class AccountMove(models.Model):
 
 
     # Calculo del valor del gasto administrativo dependiendo de los días de mora
-    @api.depends('register_date','invoice_date_due')
+    @api.depends(
+        'register_date',
+        'invoice_date_due')
     def _calculate_aditional_value(self):
         if self.register_date and self.invoice_date_due:
             if self.register_date > self.invoice_date_due and self.days_difference < 10:
