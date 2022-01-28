@@ -132,7 +132,7 @@ class AccountMove(models.Model):
             if record.invoice_payment_state == 'paid' and record.is_blocking:
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
-                logging.info("BLOCKINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
+                logging.info("------------------- CONTACTO BLOQUEO -----------------------------")
                 logging.info(subscription_obj)
                 for s in subscription_obj:
                     if sale_obj:
@@ -166,10 +166,9 @@ class AccountMove(models.Model):
             elif record.invoice_payment_state == 'paid' and record.is_validate_date:
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
-                logging.info("GASTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+                logging.info("---------------- PAGO DESPUES DEL PLAZO --------------------------")
                 logging.info(subscription_obj)
                 for s in subscription_obj:
-                    logging.info("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
                     if sale_obj:
                         record.is_validate = True
                         if s in sale_obj.order_line.subscription_id:
@@ -193,7 +192,7 @@ class AccountMove(models.Model):
                     else:
                         record.is_validate = False
             elif record.invoice_payment_state == 'paid' and record.is_validate_date == False:
-                logging.info("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                logging.info("----------------- PAGO REGISTRADO A TIEMPO --------------------")
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
                 for s in subscription_obj:
@@ -202,11 +201,10 @@ class AccountMove(models.Model):
                         if s in sale_obj.order_line.subscription_id:
                             s.display_name
                             for sus_line in s.recurring_invoice_line_ids:
-                                logging.info("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
                                 if sus_line.product_id.name == 'Gasto administrativo':
-                                    logging.info("....................................................................")
+                                    logging.info("------ EXISTE UN GASTO ADMINISTRATIVO EN LA SUSCRIPCIÓN -----------")
                                     sus_line.unlink()
-                                    logging.info("00000000000000000000000000000000000000000000payr")
+                                    logging.info("---------- SE ELIMINO LÍNEA EN LA SUSCRIPCIÓN -------")
                                     record.is_validate = False
                                 else:
                                     record.is_validate = False
