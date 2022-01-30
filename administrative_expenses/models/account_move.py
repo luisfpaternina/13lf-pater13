@@ -40,6 +40,7 @@ class AccountMove(models.Model):
         settings_obj = self.env['res.config.settings'].search([])
         for record in self:
             settings_late_charge = self.env['ir.config_parameter'].sudo().get_param('administrative_expenses.late_charge') or False
+            settings_late_fee = self.env['ir.config_parameter'].sudo().get_param('administrative_expenses.late_fee') or False
             logging.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
             logging.info(settings_late_charge)
             if record.is_blocking:
@@ -49,7 +50,7 @@ class AccountMove(models.Model):
                 logging.info("++++++++++++++++++++++++++++++")
                 logging.info(settings_late_charge)
             elif record.days_difference >= 30:
-                record.expense_name = late_fee
+                record.expense_name = settings_late_fee
             else:
                 record.expense_name = ' '
 
