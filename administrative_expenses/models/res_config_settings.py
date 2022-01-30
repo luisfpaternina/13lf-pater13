@@ -47,14 +47,14 @@ class ResConfigSettings(models.TransientModel):
 
 
     @api.model
-    def get_default_age_values(self, fields):
+    def get_default_expenses_values(self, fields):
         conf = self.env['ir.config_parameter']
         return {
             'late_charge': conf.get_param('admministrative_expenses.late_charge'),
             'late_fee': conf.get_param('admministrative_expenses.late_fee'),
         }
 
-    def set_age_values(self):
+    def set_expenses_values(self):
         conf = self.env['ir.config_parameter']
         conf.set_param('admministrative_expenses.late_charge', self.late_charge)
         conf.set_param('admministrative_expenses.late_fee', self.late_fee)
