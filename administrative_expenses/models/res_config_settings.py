@@ -36,17 +36,14 @@ class ResConfigSettings(models.TransientModel):
         default=500)
 
 
-    def set_values(self):
-        res = super(ResConfigSettings, self).set_values()
-        self.env['ir.config_parameter'].set_param('administrative_expenses.late_charge', self.late_charge)
-        return res
-
     @api.model
-    def get_values(self):
-        res = super(ResConfigSettings, self).get_values()
-        ICPSudo = self.env['ir.config_parameter'].sudo()
-        late_charges = ICPSudo.get_param('administrative_expenses.late_charge')
-        res.update(
-            late_charge=late_charges
-        )
-        return res
+    def get_default_age_values(self, fields):
+        conf = self.env['ir.config_parameter']
+        return {
+            'late_charge': conf.get_param('admministrative_expenses.late_charge'),
+        }
+
+    @api.one
+    def set_age_values(self):
+        conf = self.env['ir.config_parameter']
+        conf.set_param('admministrative_expenses.late_charge', self.late_charge)
