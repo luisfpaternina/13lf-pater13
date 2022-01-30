@@ -39,7 +39,7 @@ class AccountMove(models.Model):
     def _get_expenses_names(self):
         settings_obj = self.env['res.config.settings'].search([])
         for record in self:
-            settings_late_charge = self.env['ir.config_parameter'].sudo().get_param('late_charge') or False
+            settings_late_charge = self.env['ir.config_parameter'].sudo().get_param('administrative_expenses.late_charge') or False
             logging.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
             logging.info(settings_late_charge)
             late_charge = record.env.company.late_charge
