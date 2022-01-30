@@ -100,7 +100,7 @@ class AccountMove(models.Model):
         'invoice_date_due')
     def _calculate_aditional_value(self):
         late_charge_value = self.env['ir.config_parameter'].sudo().get_param('administrative_expenses.late_charge_value') or False
-        charge_value = late_charge / 100
+        charge_value = late_charge_value / 100
         logging.info("-----------CALCULO DE PORCENTAJE------------------")
         logging.info(late_charge_value)
         logging.info(charge_value)
