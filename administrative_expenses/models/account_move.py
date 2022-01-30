@@ -43,6 +43,7 @@ class AccountMove(models.Model):
             settings_late_fee = self.env['ir.config_parameter'].sudo().get_param('administrative_expenses.late_fee') or False
             logging.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
             logging.info(settings_late_charge)
+            logging.info(settings_late_fee)
             if record.is_blocking:
                 record.expense_name = 'Costo de bloqueo modem'
             elif record.days_difference <= 10:
