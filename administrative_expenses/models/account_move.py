@@ -99,6 +99,11 @@ class AccountMove(models.Model):
         'register_date',
         'invoice_date_due')
     def _calculate_aditional_value(self):
+        late_charge = self.env['ir.config_parameter'].sudo().get_param('administrative_expenses.late_charge_value') or False
+        charge_value = late_charge / 100
+        logging.info("-----------CALCULO DE PORCENTAJE------------------")
+        logging.info(late_charge)
+        logging.info(charge_value)
         if self.register_date and self.invoice_date_due:
             if self.register_date > self.invoice_date_due and self.days_difference < 10:
                 self.aditional_value = self.amount_untaxed * 0.10
