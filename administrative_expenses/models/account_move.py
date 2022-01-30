@@ -46,7 +46,7 @@ class AccountMove(models.Model):
             logging.info(settings_late_fee)
             if record.is_blocking:
                 record.expense_name = 'Costo de bloqueo modem'
-            elif record.days_difference <= 10:
+            elif record.days_difference < 30:
                 record.expense_name = settings_late_charge
                 logging.info("++++++++++++++++++++++++++++++")
                 logging.info(settings_late_charge)
