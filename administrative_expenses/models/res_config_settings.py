@@ -52,9 +52,11 @@ class ResConfigSettings(models.TransientModel):
         return {
             'late_charge': conf.get_param('admministrative_expenses.late_charge'),
             'late_fee': conf.get_param('admministrative_expenses.late_fee'),
+            'late_charge_value': conf.get_param('admministrative_expenses.late_charge_value'),
         }
 
     def set_expenses_values(self):
         conf = self.env['ir.config_parameter']
         conf.set_param('admministrative_expenses.late_charge', self.late_charge)
         conf.set_param('admministrative_expenses.late_fee', self.late_fee)
+        conf.set_param('admministrative_expenses.late_fee', self.late_charge_value)
