@@ -37,12 +37,12 @@ class AccountMove(models.Model):
     # Función para traer los datos de la parametrización(datos) realizada en res.config.settings
     @api.depends('days_difference')
     def _get_expenses_names(self):
-        settings_obj = self.env['res.config.settings'].search([])
         for record in self:
             logging.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
             logging.info(self.env.company.late_charge)
             logging.info(self.env.company.late_fee)
             settings_late_charge = self.env.company.late_charge
+            late_charge_value = self.env.company.late_charge_value
             settings_late_fee = self.env.company.late_fee
             if record.is_blocking:
                 record.expense_name = 'Costo de bloqueo modem'
@@ -102,9 +102,11 @@ class AccountMove(models.Model):
         logging.info("-----------CALCULO DE PORCENTAJE------------------")
         logging.info(late_charge_value)
         logging.info(charge_value)
+        late_charge_value = self.env.company.late_charge_value
+        charge_value = late_charge_value / 100
         if self.register_date and self.invoice_date_due:
             if self.register_date > self.invoice_date_due and self.days_difference < 10:
-                self.aditional_value = self.amount_untaxed * 0.10
+                self.aditional_value = self.amount_untaxed * charge_value
             elif self.register_date > self.invoice_date_due and self.days_difference >= 30:
                 self.aditional_value = self.amount_untaxed * 0.15
             else:
