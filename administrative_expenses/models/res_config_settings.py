@@ -60,4 +60,6 @@ class ResConfigSettings(models.TransientModel):
         res = super(ResConfigSettings, self).set_values()
         self.env['ir.config_parameter'].sudo().set_param('late_charge', self.late_charge)
         self.env['ir.config_parameter'].sudo().set_param('late_fee', self.late_fee)
+        self.env['ir.config_parameter'].sudo().set_param('late_charge_value', self.late_charge_value)
+        self.env['ir.config_parameter'].sudo().set_param('late_fee_value', self.late_fee_value)
         return res
