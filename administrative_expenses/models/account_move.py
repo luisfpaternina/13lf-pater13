@@ -189,7 +189,10 @@ class AccountMove(models.Model):
                         record.is_validate = True
                         if s in sale_obj.order_line.subscription_id:
                             s.display_name
-                            if len(s.recurring_invoice_line_ids) < 2:
+                            products = []
+                            for rc in s.recurring_invoice_line_ids:
+                                products.append(rc.name)
+                            if 'Gasto administrativo' not in products:
                                 vals = {
                                 'recurring_invoice_line_ids': [(0, 0, {
                                     'product_id': record.expense_product.id,
@@ -200,9 +203,9 @@ class AccountMove(models.Model):
                                     })]
                                 }
                                 s.write(vals)
-                                break
                             else:
                                 record.is_validate = False
+
                         else:
                             record.is_validate = False
                     else:
