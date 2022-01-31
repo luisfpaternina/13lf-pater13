@@ -46,29 +46,14 @@ class ResConfigSettings(models.TransientModel):
         config_parameter='admministrative_expenses.block_value')
     block_rejected = fields.Char(
         string="Name",
-        default="Cargo por débito rechazado",
+        related="company_id.block_rejected",
+        readonly=False,
         config_parameter='admministrative_expenses.block_rejected')
     rejected_value = fields.Float(
         string="Value",
-        default=500,
+        related="company_id.rejected_value",
+        readonly=False,
         config_parameter='admministrative_expenses.rejected_value')
-
-    """
-    @api.model
-    def get_default_expenses_values(self, fields):
-        conf = self.env['ir.config_parameter']
-        return {
-            'late_charge': conf.get_param('admministrative_expenses.late_charge'),
-            'late_fee': conf.get_param('admministrative_expenses.late_fee'),
-            'late_charge_value': conf.get_param('admministrative_expenses.late_charge_value'),
-        }
-
-    def set_expenses_values(self):
-        conf = self.env['ir.config_parameter']
-        conf.set_param('admministrative_expenses.late_charge', self.late_charge)
-        conf.set_param('admministrative_expenses.late_fee', self.late_fee)
-        conf.set_param('admministrative_expenses.late_fee', self.late_charge_value)
-    """
 
 
     def set_values(self):
