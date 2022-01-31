@@ -40,6 +40,7 @@ class AccountMove(models.Model):
         settings_obj = self.env['res.config.settings'].search([])
         for record in self:
             logging.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+            logging.info(self.env.company.late_charge)
             logging.info(self.env.company.late_fee)
             settings_late_charge = self.env.company.late_charge
             settings_late_fee = self.env.company.late_fee
