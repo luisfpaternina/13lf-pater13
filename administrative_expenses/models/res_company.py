@@ -19,3 +19,7 @@ class ResCompany(models.Model):
         string="Name")
     block_value = fields.Float(
         string="Value")
+    block_rejected = fields.Char(
+        string="Name")
+    rejected_value = fields.Float(
+        string="Value")
