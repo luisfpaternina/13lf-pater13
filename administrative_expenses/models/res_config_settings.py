@@ -64,4 +64,6 @@ class ResConfigSettings(models.TransientModel):
         self.env['ir.config_parameter'].sudo().set_param('late_fee_value', self.late_fee_value)
         self.env['ir.config_parameter'].sudo().set_param('block_name', self.block_name)
         self.env['ir.config_parameter'].sudo().set_param('block_value', self.block_value)
+        self.env['ir.config_parameter'].sudo().set_param('block_rejected', self.block_rejected)
+        self.env['ir.config_parameter'].sudo().set_param('rejected_value', self.rejected_value)
         return res

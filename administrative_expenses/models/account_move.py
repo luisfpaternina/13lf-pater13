@@ -46,6 +46,7 @@ class AccountMove(models.Model):
             settings_late_fee = self.env.company.late_fee
             block_name = self.env.company.block_name
             block_rejected = self.env.company.block_rejected
+            block_rejected = self.env.company.block_rejected
             if record.is_blocking:
                 record.expense_name = block_name
             elif record.days_difference < 30:
