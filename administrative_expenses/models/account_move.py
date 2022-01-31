@@ -39,11 +39,10 @@ class AccountMove(models.Model):
     def _get_expenses_names(self):
         settings_obj = self.env['res.config.settings'].search([])
         for record in self:
-            settings_late_charge = self.env['ir.config_parameter'].sudo().get_param('administrative_expenses.late_charge') or False
-            settings_late_fee = self.env['ir.config_parameter'].sudo().get_param('administrative_expenses.late_fee') or False
             logging.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-            logging.info(settings_late_charge)
-            logging.info(settings_late_fee)
+            logging.info(self.env.company.late_fee)
+            settings_late_charge = self.env.company.late_charge
+            settings_late_fee = self.env.company.late_fee
             if record.is_blocking:
                 record.expense_name = 'Costo de bloqueo modem'
             elif record.days_difference < 30:
