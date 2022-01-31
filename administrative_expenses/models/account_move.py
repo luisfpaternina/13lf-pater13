@@ -44,8 +44,10 @@ class AccountMove(models.Model):
             settings_late_charge = self.env.company.late_charge
             late_charge_value = self.env.company.late_charge_value
             settings_late_fee = self.env.company.late_fee
+            block_name = self.env.company.block_name
+            block_rejected = self.env.company.block_rejected
             if record.is_blocking:
-                record.expense_name = 'Costo de bloqueo modem'
+                record.expense_name = block_name
             elif record.days_difference < 30:
                 record.expense_name = settings_late_charge
             elif record.days_difference >= 30:
@@ -146,6 +148,7 @@ class AccountMove(models.Model):
                 subscription_obj = record.env['sale.subscription'].search([])
                 logging.info("------------------- CONTACTO BLOQUEO -----------------------------")
                 logging.info(subscription_obj)
+                block_value = self.env.company.block_value
                 for s in subscription_obj:
                     if sale_obj:
                         record.is_validate = True
@@ -159,7 +162,7 @@ class AccountMove(models.Model):
                                     price_unit = 0
                                 else:
                                     quantity = 1
-                                    price_unit = 300
+                                    price_unit = block_value
 
                                 vals = {
                                     'product_id': record.expense_product.id,
