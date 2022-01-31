@@ -191,9 +191,9 @@ class AccountMove(models.Model):
                             s.display_name
                             products = []
                             for rc in s.recurring_invoice_line_ids:
-                                products.append(rc.name)
+                                products.append(rc.product_id.name)
                             logging.info("----------------PRODUCTOS----------------------------------")
-                            logging.info(rc.name)
+                            logging.info(rc.product_id.name)
                             if 'Gasto administrativo' not in products:
                                 vals = {
                                 'recurring_invoice_line_ids': [(0, 0, {
