@@ -21,7 +21,7 @@
                         </div>
                         <div class="o_setting_right_pane">
                             <label for="late_charge_days" class="col-sm-2 o_light_label"/>
-                            <field name="late_charge_days"/>
+                            <field name="late_charge_days" invisible="1"/>
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 o_setting_box">
@@ -35,7 +35,7 @@
                         </div>
                         <div class="o_setting_right_pane">
                             <label for="late_fee_days" class="col-sm-2 o_light_label"/>
-                            <field name="late_fee_days"/>
+                            <field name="late_fee_days" invisible="1"/>
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 o_setting_box">
