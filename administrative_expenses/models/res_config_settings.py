@@ -18,7 +18,8 @@ class ResConfigSettings(models.TransientModel):
         config_parameter='admministrative_expenses.late_charge_days')
     late_fee = fields.Char(
         string="Late fee",
-        default="Cargo por mora",
+        related="company_id.late_fee",
+        readonly=False,
         config_parameter='admministrative_expenses.late_fee')
     late_fee_value = fields.Float(
         string="Late fee value",
@@ -60,3 +61,9 @@ class ResConfigSettings(models.TransientModel):
         conf.set_param('admministrative_expenses.late_charge', self.late_charge)
         conf.set_param('admministrative_expenses.late_fee', self.late_fee)
         conf.set_param('admministrative_expenses.late_fee', self.late_charge_value)
+
+
+    def set_values(self):
+        res = super(ResConfigSettings, self).set_values()
+        self.env['ir.config_parameter'].sudo().set_param('campo', self.campo)
+        return res
