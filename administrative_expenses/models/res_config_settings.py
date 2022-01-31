@@ -46,7 +46,7 @@ class ResConfigSettings(models.TransientModel):
         default=500,
         config_parameter='admministrative_expenses.rejected_value')
 
-
+    """
     @api.model
     def get_default_expenses_values(self, fields):
         conf = self.env['ir.config_parameter']
@@ -61,6 +61,7 @@ class ResConfigSettings(models.TransientModel):
         conf.set_param('admministrative_expenses.late_charge', self.late_charge)
         conf.set_param('admministrative_expenses.late_fee', self.late_fee)
         conf.set_param('admministrative_expenses.late_fee', self.late_charge_value)
+    """
 
 
     def set_values(self):
