@@ -104,11 +104,13 @@ class AccountMove(models.Model):
         logging.info(charge_value)
         late_charge_value = self.env.company.late_charge_value
         charge_value = late_charge_value / 100
+        late_fee_value = self.env.company.late_fee_value
+        fee_value = late_fee_value / 100
         if self.register_date and self.invoice_date_due:
             if self.register_date > self.invoice_date_due and self.days_difference < 10:
                 self.aditional_value = self.amount_untaxed * charge_value
             elif self.register_date > self.invoice_date_due and self.days_difference >= 30:
-                self.aditional_value = self.amount_untaxed * 0.15
+                self.aditional_value = self.amount_untaxed * fee_value
             else:
                 self.aditional_value = 0.0
         else:
