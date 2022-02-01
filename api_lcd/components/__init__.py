@@ -21,3 +21,4 @@ from . import endpoint_invoice_payment
 from . import endpoint_invoice_credit_note
 from . import endpoint_res_users
 from . import endpoint_res_tarjeta
+from . import endpoint_res_currency

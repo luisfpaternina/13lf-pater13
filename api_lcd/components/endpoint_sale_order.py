@@ -90,6 +90,8 @@ class SaleOrder(Component):
         stock = self.env["stock.picking"].search([("origin","=",sale.name)],limit=1)
         stock.action_assign()
         stock.button_validate()
+        wiz = self.env['stock.immediate.transfer'].create({'pick_ids': [(6, 0, [stock.id])]})
+        wiz.process()
         res["message"] = "se creo la Factura: {sale}"\
                 .format(sale = invoice.name+'-'+sale.name)
         return res

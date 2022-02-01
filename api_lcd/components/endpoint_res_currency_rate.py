@@ -9,7 +9,7 @@ _logger = logging.getLogger(__name__)
 class ResCurrencyRate(Component):
     _inherit = 'base.rest.service'
     _name = 'res.currency.rate.service'
-    _usage = 'Res Currency'
+    _usage = 'Res Currency Rate'
     _collection = 'contact.services.private.services'
     _description = """
          API Services to search currency rate
@@ -32,7 +32,8 @@ class ResCurrencyRate(Component):
         if res_currency:
             res = {
                      "fecha": fecha,
-                    "tasa": res_currency.rate
+                    "tasa": res_currency.rate,
+                    "id": res_currency.currency_id.id
                   }
         else:
             res = {
@@ -43,7 +44,8 @@ class ResCurrencyRate(Component):
     
     def _validator_search(self):
         res = {
-                "fecha": {"type":"date", "required": True},
+                "id": {"type":"integer", "required": False},
+                "fecha": {"type":"date", "required": False},
                 "tasa": {"type":"float", "required": False},
                 "message": {"type":"string", "required": False}
               }
