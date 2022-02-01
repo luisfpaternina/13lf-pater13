@@ -33,7 +33,6 @@ class AccountMove(models.Model):
     register_date = fields.Date(
         string="Register date")
 
-    
     # Función para traer los datos de la parametrización(datos) realizada en res.config.settings
     @api.depends('days_difference')
     def _get_expenses_names(self):
@@ -56,7 +55,6 @@ class AccountMove(models.Model):
             else:
                 record.expense_name = ' '
 
-
     # Función para calcular los días de mora
     @api.depends(
         'aditional_payment_date',
@@ -68,7 +66,6 @@ class AccountMove(models.Model):
             else:
                 rec.days_difference = 0
 
-
     # Función para traer el producto gasto administrativo el cual se carga en la data del modulo
     @api.depends('name')
     def add_administrative_expense_product(self):
@@ -77,7 +74,6 @@ class AccountMove(models.Model):
             self.expense_product = product_obj.id
         else:
             self.expense_product = False
-
 
     # Función para consultar el valor de la fecha de pago en el wizard de account.payment
     @api.onchange(
@@ -93,7 +89,6 @@ class AccountMove(models.Model):
             self.aditional_payment_date = payment_obj.payment_date
         else:
             self.aditional_payment_date = False
-
 
     # Calculo del valor del gasto administrativo dependiendo de los días de mora
     @api.depends(
@@ -119,7 +114,6 @@ class AccountMove(models.Model):
         else:
             self.aditional_value = 0.0
 
-
     # Función para comparar fechas: fecha de pago vs plazo de pago
     @api.depends(
         'register_date',
@@ -139,7 +133,6 @@ class AccountMove(models.Model):
                     record.is_validate_date = False
             else:
                 record.is_validate_date = False
-
 
     # Función para agregar o eliminar líneas en la suscripción dependiendo el gasto administrativo
     def _validate_subscription(self):
