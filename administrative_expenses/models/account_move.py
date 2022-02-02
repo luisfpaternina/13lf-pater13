@@ -63,9 +63,9 @@ class AccountMove(models.Model):
             else:
                 rec.days_difference = 0
 
-    # Función para traer el producto gasto administrativo el cual se carga en la data del modulo
     @api.depends('name')
     def add_administrative_expense_product(self):
+        # Función para traer el producto gasto administrativo el cual se carga en la data del modulo
         product_obj = self.env['product.template'].search([('name', '=', 'Gasto administrativo')])
         if product_obj:
             self.expense_product = product_obj.id
