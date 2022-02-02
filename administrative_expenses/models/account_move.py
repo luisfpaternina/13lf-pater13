@@ -80,7 +80,8 @@ class AccountMove(models.Model):
         'name')
     def _calculate_payment_date(self):
         # Función para consultar el valor de la fecha de pago en el wizard de account.payment
-        payment_obj = self.env['account.payment'].search([('communication', '=', self.name)],limit=1)
+        payment_obj = self.env['account.payment'].search(
+            [('communication', '=', self.name)], limit=1)
         if payment_obj:
             self.aditional_payment_date = payment_obj.payment_date
         else:
