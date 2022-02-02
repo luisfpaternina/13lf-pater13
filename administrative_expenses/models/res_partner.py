@@ -7,7 +7,6 @@ class ResPartner(models.Model):
         string="Blocking",
         compute="_compute_check_category_id")
 
-
     @api.depends('category_id')
     def _compute_check_category_id(self):
         for record in self:

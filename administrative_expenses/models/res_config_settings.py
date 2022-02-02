@@ -55,7 +55,6 @@ class ResConfigSettings(models.TransientModel):
         readonly=False,
         config_parameter='admministrative_expenses.rejected_value')
 
-
     def set_values(self):
         res = super(ResConfigSettings, self).set_values()
         self.env['ir.config_parameter'].sudo().set_param('late_charge', self.late_charge)
