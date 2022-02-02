@@ -33,13 +33,10 @@ class AccountMove(models.Model):
     register_date = fields.Date(
         string="Register date")
 
-    # Función para traer los datos de la parametrización(datos) realizada en res.config.settings
     @api.depends('days_difference')
     def _get_expenses_names(self):
+        # Función para traer los datos de la parametrización(datos) realizada en res.config.settings
         for record in self:
-            logging.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-            logging.info(self.env.company.late_charge)
-            logging.info(self.env.company.late_fee)
             settings_late_charge = self.env.company.late_charge
             late_charge_value = self.env.company.late_charge_value
             settings_late_fee = self.env.company.late_fee
@@ -55,11 +52,11 @@ class AccountMove(models.Model):
             else:
                 record.expense_name = ' '
 
-    # Función para calcular los días de mora
     @api.depends(
         'aditional_payment_date',
         'invoice_date_due')
     def _compute_difference(self):
+        # Función para calcular los días de mora
         for rec in self:
             if rec.register_date and rec.invoice_date_due:
                 rec.days_difference = (rec.register_date - rec.invoice_date_due).days
@@ -75,7 +72,6 @@ class AccountMove(models.Model):
         else:
             self.expense_product = False
 
-    # Función para consultar el valor de la fecha de pago en el wizard de account.payment
     @api.onchange(
         'aditional_payment_date',
         'invoice_date_due',
@@ -84,22 +80,20 @@ class AccountMove(models.Model):
         'invoice_date',
         'name')
     def _calculate_payment_date(self):
+        # Función para consultar el valor de la fecha de pago en el wizard de account.payment
         payment_obj = self.env['account.payment'].search([('communication', '=', self.name)],limit=1)
         if payment_obj:
             self.aditional_payment_date = payment_obj.payment_date
         else:
             self.aditional_payment_date = False
 
-    # Calculo del valor del gasto administrativo dependiendo de los días de mora
     @api.depends(
         'register_date',
         'invoice_date_due')
     def _calculate_aditional_value(self):
+        # Calculo del valor del gasto administrativo dependiendo de los días de mora
         late_charge_value = self.env['ir.config_parameter'].sudo().get_param('administrative_expenses.late_charge_value') or False
         charge_value = late_charge_value / 100
-        logging.info("-----------CALCULO DE PORCENTAJE------------------")
-        logging.info(late_charge_value)
-        logging.info(charge_value)
         late_charge_value = self.env.company.late_charge_value
         charge_value = late_charge_value / 100
         late_fee_value = self.env.company.late_fee_value
@@ -114,7 +108,6 @@ class AccountMove(models.Model):
         else:
             self.aditional_value = 0.0
 
-    # Función para comparar fechas: fecha de pago vs plazo de pago
     @api.depends(
         'register_date',
         'invoice_date_due',
@@ -123,6 +116,7 @@ class AccountMove(models.Model):
         'invoice_date',
         'name')
     def _validate_dates(self):
+        # Función para comparar fechas: fecha de pago vs plazo de pago
         for record in self:
             if record.register_date and record.invoice_date_due:
                 if record.register_date > record.invoice_date_due:
@@ -134,14 +128,12 @@ class AccountMove(models.Model):
             else:
                 record.is_validate_date = False
 
-    # Función para agregar o eliminar líneas en la suscripción dependiendo el gasto administrativo
     def _validate_subscription(self):
+        # Función para agregar o eliminar líneas en la suscripción dependiendo el gasto administrativo
         for record in self:
             if record.invoice_payment_state == 'paid' and record.is_blocking:
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
-                logging.info("------------------- CONTACTO BLOQUEO -----------------------------")
-                logging.info(subscription_obj)
                 block_value = self.env.company.block_value
                 for s in subscription_obj:
                     if sale_obj:
@@ -175,8 +167,6 @@ class AccountMove(models.Model):
             elif record.invoice_payment_state == 'paid' and record.is_validate_date:
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
-                logging.info("---------------- PAGO DESPUES DEL PLAZO --------------------------")
-                logging.info(subscription_obj)
                 for s in subscription_obj:
                     if sale_obj:
                         record.is_validate = True
@@ -185,8 +175,6 @@ class AccountMove(models.Model):
                             products = []
                             for rc in s.recurring_invoice_line_ids:
                                 products.append(rc.product_id.name)
-                            logging.info("----------------PRODUCTOS----------------------------------")
-                            logging.info(rc.product_id.name)
                             if 'Gasto administrativo' not in products:
                                 vals = {
                                 'recurring_invoice_line_ids': [(0, 0, {
@@ -206,7 +194,6 @@ class AccountMove(models.Model):
                     else:
                         record.is_validate = False
             elif record.invoice_payment_state == 'paid' and record.is_validate_date == False:
-                logging.info("----------------- PAGO REGISTRADO A TIEMPO --------------------")
                 sale_obj = record.env['sale.order'].search([('name', '=', record.invoice_origin)])
                 subscription_obj = record.env['sale.subscription'].search([])
                 for s in subscription_obj:
@@ -216,9 +203,7 @@ class AccountMove(models.Model):
                             s.display_name
                             for sus_line in s.recurring_invoice_line_ids:
                                 if sus_line.product_id.name == 'Gasto administrativo':
-                                    logging.info("------ EXISTE UN GASTO ADMINISTRATIVO EN LA SUSCRIPCIÓN -----------")
                                     sus_line.unlink()
-                                    logging.info("---------- SE ELIMINO LÍNEA EN LA SUSCRIPCIÓN -------")
                                     record.is_validate = False
                                 else:
                                     record.is_validate = False
