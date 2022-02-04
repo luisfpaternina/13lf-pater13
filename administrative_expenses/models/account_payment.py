@@ -5,6 +5,7 @@ import logging
 class AccountPayment(models.Model):
     _inherit = 'account.payment'
 
+    # Función para mostrar la fecha de pago en la factura.
     def post(self):
         rec = super(AccountPayment, self).post()
         acc_move_obj = self.env['account.move'].search([('name','=',self.communication)],limit=1)
