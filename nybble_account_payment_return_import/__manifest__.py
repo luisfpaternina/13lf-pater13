@@ -27,7 +27,7 @@
                 'account_payment_return',
                 'account_payment_return_import',
                 'account_payment_fix',
-                'account_payment_order'
+                #'account_payment_order'
     ],
     # always loaded
     'data': [
