@@ -29,6 +29,7 @@
         'sale_management',
         'sale_subscription',
         'contacts',
+        'base',
         #'nybble_account_payment_return_import',
 
     ],
